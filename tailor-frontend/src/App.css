@@ -130,26 +130,56 @@ body{
 
   }
   .works p{
-      margin-top: 2rem;
-    
+      margin-top: 2rem; 
   }
 
   .works div{
-   
     width: 100%;
     flex-grow: 4;
     text-align: center;
-    line-height: 20px;
+    line-height: 25px;
     font-size: 16px;
-   
   }
+
   .works div img{
       border:1px solid black;
-      border-radius: 50%;
-     
-      
+      border-radius: 50%;   
   }
 /*Home Folder style component @HowItWork End  */
+
+/* Home Folder style component @WhyChoose Start */
+
+.whyChoose{
+  padding-top: 1.5rem;
+}
+
+.whyChoose h3{
+  font-weight: bold;
+}
+
+.choose{ 
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  padding-left: 1rem;
+}
+
+.choose div{
+  width: 100%;
+  flex-grow: 4;
+  text-align: center;
+  line-height: 30px;
+  font-size: 16px;
+}
+
+.choose div img{
+  height: 200px;
+  max-height: 100%;
+  max-width: 100%;
+  
+}
+
+/* Home Folder style component @WhyChoose End */
 
 
 /*@footer Footer style Start */
@@ -189,7 +219,7 @@ body{
   .images-Slider img{
     height: 250px;  
   }
-
+ 
  
 
 }
@@ -198,5 +228,19 @@ body{
  .works{
   flex-direction: column;
 }
+}
 
+@media (max-width:880px){
+  /* component @whyChoose choose */
+  .choose{
+   flex-direction: column;
+ }
+ }
+
+
+@media (max-width:975px){
+   /* component @whyChoose choose images */
+  .choose div img{
+    height: 180px;;
+  }
 }
