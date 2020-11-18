@@ -97,3 +97,29 @@ body{
   align-items: center;
 }
 /* Footer style Start */
+
+
+/* For Mobile Responsive Start */
+@media (max-width:550px){
+  /* header padding */
+  .header{
+    padding-left: 1.5rem;
+  }
+
+  /* header logo size */
+  .header .header-logo a{
+    font-size: 2rem;
+  }
+/* header menu right padding */
+  .header .header-menu {
+    padding-right: 2rem;
+  }
+
+  .header .header-menu a {
+    font-size: 1.5rem;
+     padding: 1rem;
+  }
+
+  
+
+}
