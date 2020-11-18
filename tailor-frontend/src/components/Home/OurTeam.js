@@ -6,15 +6,16 @@ export const OurTeam = () => {
         <h3 className="text-center">Our Team</h3>
         <div className="team">
             <div>
-                <img src="arman.PNG" alt="ibrahim" ></img>   
+                <img src="images/OurTeam/ibrahim.jpg" alt="ibrahim" ></img> 
+                <h3>M Ibrahim</h3>  
             </div>
             <div>
-                <img src="arman.PNG" alt="arman"></img>
+                <img src="images/OurTeam/arman.PNG" alt="arman"></img>
                 <h3>Arman Ali</h3>
             </div>
             <div>
-                <img src="arman.PNG" alt="shoaib" ></img>
-                
+                <img src="images/OurTeam/shoaib.png" alt="shoaib" ></img>
+                <h3>M Shoaib</h3>
             </div>
 
 
