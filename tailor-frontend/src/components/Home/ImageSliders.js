@@ -5,6 +5,7 @@ export const ImageSliders = () => {
     // const [index , setIndex] = useState(0);
 
     const images = [
+        'images/slider/t.jpg',
         'images/slider/slide_2.png',
         'images/slider/slide_3.jpg',
         'images/slider/slide_4.jpg'
