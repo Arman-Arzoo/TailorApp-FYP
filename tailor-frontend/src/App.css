@@ -4,6 +4,9 @@ html{
   font-size: 62.5%;
   box-sizing: border-box;
 }
+*{
+  box-sizing: border-box;
+}
 
 body{
   font: 1.6rem Helvetica;
@@ -45,6 +48,10 @@ body{
   height: 7rem;
   padding-left: 5rem;
   box-shadow: 0 0 10px gray;
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
 
 }
 
@@ -227,6 +234,10 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  bottom:0;
+  right:0;
+  width:100%;
 }
 /* Footer style Start */
 
@@ -244,7 +255,7 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
   }
 /* header menu right padding */
   .header .header-menu {
-    padding-right: 2rem;
+    padding-right: 2.5rem;
   }
 
   .header .header-menu a {
@@ -350,3 +361,63 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
    /* Form @SignUp Page Start */
 
  
+
+   /*@Dashboad SideBar */
+   /* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: gray  ;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: black;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #45a049;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
