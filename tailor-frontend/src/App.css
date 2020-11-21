@@ -292,3 +292,19 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
   height: 100%;
 }
 }
+
+
+
+
+
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+  margin: 2rem 40rem;
+}
+
+input{
+  width: 100%;
+}

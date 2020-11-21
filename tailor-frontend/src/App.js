@@ -1,11 +1,9 @@
 import './App.css';
-import { BrowserRouter} from "react-router-dom";
+import { BrowserRouter, Route} from "react-router-dom";
 import {Header} from './components/Header';
 import {Footer} from './components/Footer'
-import {ImageSliders} from './components/Home/ImageSliders';
-import {HowItWork} from './components/Home/HowItWork';
-import {WhyChoose} from './components/Home/WhyChoose';
-import {OurTeam} from './components/Home/OurTeam';
+import {HomeScreen} from './components/Home/HomeScreen';
+import { SignUp } from './components/SignUp/SignUp';
 
 function App() {
   return (
@@ -14,10 +12,10 @@ function App() {
      
       <Header/>
       <main className="main">
-        <ImageSliders/>
-        <HowItWork/>
-        <WhyChoose/>
-        <OurTeam/>
+        <Route path="/" exact component={HomeScreen}></Route>
+        <Route path="/signup"  component={SignUp}></Route>
+        
+        
       
       </main>
       <Footer name="Arman ALi"/>
