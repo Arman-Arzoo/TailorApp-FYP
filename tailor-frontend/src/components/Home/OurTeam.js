@@ -20,6 +20,10 @@ export const OurTeam = () => {
 
 
         </div>
+            <hr/>
+            <hr/>
+            <hr/>
+            <hr/>
 
     </div>
     )

@@ -368,16 +368,18 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: gray  ;
+  background-color:#1d4354 ;
   position: fixed;
   height: 100%;
   overflow: auto;
+  /* box-shadow: 0 0 5px ; */
 }
 
 /* Sidebar links */
 .sidebar a {
   display: block;
-  color: black;
+  color:white;
+
   padding: 16px;
   text-decoration: none;
 }
@@ -397,7 +399,7 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
   margin-left: 200px;
-  padding: 1px 16px;
+  padding: 2rem;  
   height: 1000px;
 }
 
