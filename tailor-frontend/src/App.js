@@ -4,6 +4,7 @@ import {Header} from './components/Header';
 import {Footer} from './components/Footer'
 import {HomeScreen} from './components/Home/HomeScreen';
 import { SignUp } from './components/SignUp/SignUp';
+import {SignIn} from './components/SignIn/SignIn';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <main className="main">
         <Route path="/" exact component={HomeScreen}></Route>
         <Route path="/signup"  component={SignUp}></Route>
+        <Route path='/signin' component={SignIn}></Route>
         
         
       

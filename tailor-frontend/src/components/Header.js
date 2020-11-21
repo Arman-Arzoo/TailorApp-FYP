@@ -10,8 +10,8 @@ export const Header = () => {
              <Link to="/">Tailor App</Link>
              </div>
              <div className="header-menu">
-             <Link to="/signup">Sign Up</Link>
-             <Link to="/singIn">Sign In</Link>
+             <Link to = "/signup">Sign Up</Link>
+             <Link to = "/signin">Sign In</Link>
              </div>
             
             
