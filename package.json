@@ -4,8 +4,10 @@
   "description": "We are 3 in team to develop this project. project include measurement submission ,hire expert for measurement , hire tailor , gave feed back and use pick up services. We use MERN stack techologies for building this project",
   "main": "server.js",
   "scripts": {
-    "watch": "node server.js",
-    "start": " nodemon server.js",
+    "start": "node server.js",
+    "server": " nodemon server.js",
+    "client": "npm start --prefix tailor-frontend",
+    "dev": "concurrently \"npm run server\" \" npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

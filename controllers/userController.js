@@ -100,7 +100,7 @@ exports.UserSingup = async (req, res) => {
       country,
       state,
       city,
-      zipCode,
+      zipCode
     });
 
     const savedUser = await newUser.save();

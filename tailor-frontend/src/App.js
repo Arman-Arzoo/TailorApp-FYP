@@ -6,10 +6,17 @@ import { HomeScreen } from "./components/Home/HomeScreen";
 import { SignUp } from "./components/SignUp/SignUp";
 import { SignIn } from "./components/SignIn/SignIn";
 import { UDashboard } from "./components/UserDashboard/UDashboard";
+import {  GlobalProvider} from "./context/GlobalContexts";
+
 
 function App() {
+
+
+
   return (
     <BrowserRouter>
+    <GlobalProvider>
+     
       <div className="grid-container">
         <Header />
         <Switch>
@@ -22,6 +29,8 @@ function App() {
         </Switch>
         <Footer name="Arman ALi" />
       </div>
+    
+      </GlobalProvider>
     </BrowserRouter>
   );
 }

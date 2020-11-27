@@ -215,8 +215,8 @@ body{
 }
 
 .team div img{
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   box-shadow: 0 0 10px black;
 }
@@ -356,6 +356,25 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
 
   .form-container input[type=submit]:hover {
     background-color: #45a049;
+  }
+
+  /* error handling @ErrorNotice */
+  .error-notice{
+    margin:1rem o;
+    border: 1px solid red;
+    background-color: rosybrown;
+    padding:0.5rem;
+    border-radius: 8px;
+    display:flex;
+    justify-content: space-between;
+  }
+  
+  .error-notice button{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    color: aliceblue;
+    background-color: red;
   }
 
    /* Form @SignUp Page Start */
