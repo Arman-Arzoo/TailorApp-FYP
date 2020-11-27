@@ -44,8 +44,7 @@ exports.UserSingup = async (req, res) => {
       !address ||
       !country ||
       !state ||
-      !city ||
-      !zipCode
+      !city 
     ) {
       return res.status(400).json({ msg: "Please Fill Out All The Field" });
     }
@@ -124,7 +123,7 @@ exports.UserLogin = async (req, res) => {
 
   const user = await User.findOne({ email: email });
 
-  console.log(user)
+
 
   if (!user) {
     res.status(400).json({ msg: "No Account With This Email" });

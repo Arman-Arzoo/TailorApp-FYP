@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext} from "react";
+// import { Link, useHistory } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { GlobalContext } from "./../../context/GlobalContexts";
-import axios from 'axios';
-import ErrorNotice from './../misc/errorNotices';
+// import axios from 'axios';
+// import ErrorNotice from './../misc/errorNotices';
 
 export const UpdateProfile = () => {
   const { userData} = useContext(GlobalContext);

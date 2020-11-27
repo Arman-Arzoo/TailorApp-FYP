@@ -14,11 +14,11 @@ export const SignUp = () => {
   const [password, setPassword] = useState();
   const [confirmedPassword, setconfirmedPassword] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
-  const [gender, setGender] = useState();
+  const [gender, setGender] = useState("male");
   const [address, setAddress] = useState();
-  const [country, setCountry] = useState()
-  const [state, setState] = useState();
-  const [city, setCity] = useState();
+  const [country, setCountry] = useState("pakistan")
+  const [state, setState] = useState("pubjab");
+  const [city, setCity] = useState("attock");
   const [zipcode, setZipCode] = useState();
   const [error, setError] = useState();
 
@@ -45,7 +45,9 @@ export const SignUp = () => {
         zipcode,
       }
 
-      await axios.post("/users/signup", newUser);
+      const a = await axios.post("/users/signup", newUser);
+      console.log(a);
+      
 
       const loginRes = await axios.post("/users/signin", {
         email,
@@ -56,10 +58,9 @@ export const SignUp = () => {
         user: loginRes.data.user
       });
       localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/")
+      history.push("/udashboard")
    
-  
-      
+     
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
     }
@@ -142,7 +143,7 @@ export const SignUp = () => {
             setGender(e.target.value);
           }}
         >
-          <option value="male">Male</option>
+          <option selected value="male">Male</option>
           <option value="female">Female</option>
         </select>
 
@@ -163,7 +164,7 @@ export const SignUp = () => {
             setCountry(e.target.value);
           }}
         >
-          <option value="pakistan">Pakistan</option>
+          <option selected value="pakistan">Pakistan</option>
         </select>
 
         <label htmlFor="state">State</label>
@@ -173,7 +174,7 @@ export const SignUp = () => {
             setState(e.target.value);
           }}
         >
-          <option value="pubjab">Pubjab</option>
+          <option selected value="pubjab">Pubjab</option>
         </select>
 
         <label htmlFor="city">City</label>
@@ -183,14 +184,14 @@ export const SignUp = () => {
             setCity(e.target.value);
           }}
         >
-          <option value="attock">Attock</option>
+          <option selected value="attock">Attock</option>
         </select>
 
-        <label htmlFor="zip code">Zip code</label>
+        <label htmlFor="phone number">Phone Number</label>
         <input
           type="text"
-          name="zip code"
-          placeholder="Your last name.."
+          name="phone number"
+          placeholder="Phone number.."
           onChange={(e) => {
             setZipCode(e.target.value);
           }}
