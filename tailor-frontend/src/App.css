@@ -305,9 +305,6 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
 }
 }
 
-
-
-
   /* Form @SignUp Page Start */
    
   .form-container{
@@ -315,7 +312,7 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
     /* justify-content: center; */
     background-color: white;
     padding: 3rem;
-    margin: 3.5rem 30rem;
+    margin: 3.5rem 35rem;
     box-shadow: 0 0 5px;
     
   }
@@ -360,11 +357,11 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
 
   /* error handling @ErrorNotice */
   .error-notice{
-    margin:1rem o;
-    border: 1px solid red;
-    background-color: rosybrown;
-    padding:0.5rem;
-    border-radius: 8px;
+    margin:1.5rem 0;
+    /* border: 1px solid red; */
+    box-shadow: 0 0 2px;
+    background-color: white;
+    padding:0.6rem;
     display:flex;
     justify-content: space-between;
   }
@@ -374,7 +371,10 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
     width: 25px;
     border-radius: 50%;
     color: aliceblue;
-    background-color: red;
+    background-color: #1d4354;
+  }
+  .error-notice span{
+    color:red;
   }
 
    /* Form @SignUp Page Start */

@@ -9,7 +9,7 @@ export const SignIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  
+
   const { setUserData } = useContext(GlobalContext);
   const history = useHistory();
 
@@ -46,7 +46,7 @@ export const SignIn = () => {
         <label htmlFor="password">Password</label>
         <input type="password" name="password" placeholder="Password.." onChange={(e) => setPassword(e.target.value)}/>
 
-        <input type="submit" value="Create An Account" />
+        <input type="submit" value="SIGN IN" />
       </form>
     </div>
   );
