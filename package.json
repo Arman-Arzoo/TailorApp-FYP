@@ -29,6 +29,8 @@
     "is-valid-zipcode": "^1.0.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.15",
+    "nodemailer": "^6.4.16",
+    "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.6",
     "validate-phone-number-node-js": "0.0.1"
   }

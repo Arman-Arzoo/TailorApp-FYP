@@ -9,7 +9,12 @@ const { findByIdAndDelete } = require("../models/userModel");
 // const validator = require("validator");
 // const auth = require("../middleWare/auth");
 
+// const nodemaier  = require( 'nodemailer');
+// const sendGridTransport = require('nodemailer-sendgrid-transport');
+
 // dotenv.config();
+
+
 
 // @disc   Get all Users
 // @Route  Post /users/singup
@@ -102,7 +107,23 @@ exports.UserSingup = async (req, res) => {
       zipCode
     });
 
-    const savedUser = await newUser.save();
+    //email to user
+    // const transporter = nodemaier.createTransport(sendGridTransport({
+    //   auth:{
+    //     api_key:"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"
+    //   }
+
+    // }))
+    const savedUser = await newUser.save()
+    // .then(user=>{
+    //   transporter.sendMail({
+    //     to:user.email,
+    //     from:"breakfast389@gmail.com",
+    //     subject:"conformation message ",
+    //     html:"<h1>welcome to email</h1>"
+
+    //   })
+    // });
     res.json(savedUser);
   
   } catch (err) {

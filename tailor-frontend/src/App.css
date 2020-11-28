@@ -387,7 +387,7 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color:#1d4354 ;
+  background-color:rgb(14, 13, 13) ;
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -405,15 +405,35 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
 
 /* Active/current link */
 .sidebar a.active {
-  background-color: black;
+  background-color: #45a049;
   color: white;
 }
 
 /* Links on mouse-over */
 .sidebar a:hover:not(.active) {
-  background-color: #45a049;
+  background-color:#1d4354;
   color: white;
 }
+.sidebar-profile{
+  display: flex;
+ align-items: center;
+ justify-content: space-evenly;
+ padding: 5px;
+ margin: 10px;
+  
+
+}
+ .sidebar-profile img{
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.sidebar-name{
+  color: white;
+  
+} 
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
