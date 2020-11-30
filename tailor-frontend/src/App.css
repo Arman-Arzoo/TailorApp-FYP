@@ -55,6 +55,12 @@ body{
 
 }
 
+.header-menu{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
 /* @header-logo */
 .header .header-logo a{
   color: white;
@@ -84,6 +90,29 @@ body{
 
 .header .header-menu a:hover{
   color: green;
+}
+
+/* if user log in  then @header-profile */
+.header-profile{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.header-profile img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+span.header-name {
+  font-size: 14px;
+}
+
+.users-notification{
+font-size: 2.5rem;
+padding-right: 2.5rem;
+
+
 }
 
 /* Header style Start */
@@ -425,8 +454,8 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
 }
  .sidebar-profile img{
 
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
 }
 
