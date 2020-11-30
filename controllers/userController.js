@@ -226,9 +226,8 @@ exports.tokenValid =  async (req,res)=>{
 // User Token validation End
 
 
-// @disc   Get all Users
-// @Route  Get /users/
-// @acess  Public
+
+
 
 exports.GetAllUser = async (req,res) =>{
   try {
@@ -245,3 +244,40 @@ exports.GetAllUser = async (req,res) =>{
 
 }
 
+// update user profile 
+
+// @disc   put all Users
+// @Route  put /users/:id
+// @acess  Public
+
+exports.updateUser = async (req,res) =>{
+
+
+  User.findById(req.params.id, function(err, user) {
+    if (!user){
+        res.status(404).send("data is not found");
+    }
+    else{
+        user.firstName = req.body.firstName
+        user.lastName = req.body.lastName
+        user.email = req.body.email
+        user.phoneNumber =  req.body.phoneNumber
+        user.gender = req.body.gender
+        user.address = req.body.address
+        user.country = req.body.country
+        user.state = req.body.state
+        user.city = req.body.city
+        user.zipCode = req.body.zipCode
+       
+        user.save().then(user => {
+            res.json('user updated!');
+        })
+        .catch(err => {
+            res.status(400).send("Update not possible");
+        });
+
+      }
+
+});
+
+}

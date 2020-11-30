@@ -12,6 +12,8 @@ router.delete('/delete-user',auth,userController.UserSingup);
 router.post('/token-valid',userController.tokenValid);
 // get all user form database
 router.get('/',auth,userController.GetAllUser);
+// router for update user
+router.put('/:id',auth,userController.updateUser);
 
 
 module.exports = router
