@@ -10,6 +10,10 @@ export const UDashboard = () => {
   const { userData, setUserData } = useContext(GlobalContext);
   const history = useHistory();
 
+  const firstname = ((userData || {}).user || {}).firstName;
+  const lastname = ((userData || {}).user || {}).lastName;
+  const userName = firstname + " " + lastname;
+
   const logOut = () => {
     setUserData({
       token: undefined,
@@ -24,7 +28,7 @@ export const UDashboard = () => {
       <div className="sidebar">
         <div className="sidebar-profile">
            <img src="/images/OurTeam/arman.PNG" alt="arman"></img>
-           <span className="sidebar-name">arman ali </span>
+           <span className="sidebar-name">{userName} </span>
         </div>
         <hr/>
        

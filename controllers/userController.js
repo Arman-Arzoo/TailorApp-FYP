@@ -235,6 +235,14 @@ exports.GetAllUser = async (req,res) =>{
     res.json({
       firstName: user.firstName,
       lastName: user.lastName,
+      email: user.email,
+      phoneNumber:user.phoneNumber,
+      gender:user.gender,
+      address:user.address,
+      country:user.country,
+      state:user.status,
+      city:user.city,
+      zipCode:user.zipCode,
       id: user._id
     })
     

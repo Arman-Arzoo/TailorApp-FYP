@@ -15,7 +15,7 @@ export const UpdateProfile = () => {
     <div className="form-container">
       
       <form >
-      <h2 className="text-center">Create An Account</h2>
+      <h2 className="text-center">Your profile</h2>
       {/* {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />} */}
         
         
@@ -25,6 +25,7 @@ export const UpdateProfile = () => {
           name="firstname"
           placeholder="Your name.."
           value={((userData || {}).user || {}).firstName}
+        
        
         />
 
@@ -44,23 +45,7 @@ export const UpdateProfile = () => {
           value={((userData || {}).user || {}).email}
         />
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password.."
-
-         
-        />
-
-        <label htmlFor="lname">Confirm password</label>
-        <input
-          type="password"
-          name="confirm password"
-          placeholder="Confirmed Password."
-         
-        />
-
+        
         <label htmlFor="phone number">Phone Number</label>
         <input
           type="text"
@@ -84,6 +69,7 @@ export const UpdateProfile = () => {
           type="text"
           name="address"
           placeholder="Address.."
+          value={((userData || {}).user || {}).address}
         
         />
 
