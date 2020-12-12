@@ -422,6 +422,10 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
   overflow: auto;
   /* box-shadow: 0 0 5px ; */
 }
+.hide-sidebar{
+  display: none;
+ 
+}
 
 /* Sidebar links */
 .sidebar a {

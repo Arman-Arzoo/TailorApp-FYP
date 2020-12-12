@@ -44,6 +44,7 @@ export const GlobalProvider = ({ children }) => {
 //     }
 // }
 
+const [isSidebar , setSidebar] = useState(true)
 
 const [userData, setUserData] = useState({
   token: undefined,
@@ -85,7 +86,10 @@ useEffect(() => {
     <GlobalContext.Provider
       value={{
        userData,
-       setUserData
+       setUserData,
+       isSidebar,
+       setSidebar
+       
       }}
     >
       {children}

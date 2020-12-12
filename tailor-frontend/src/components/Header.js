@@ -5,6 +5,7 @@ import {AiFillBell} from 'react-icons/ai'
 
 export const Header = () => {
   const { userData } = useContext(GlobalContext);
+  const {isSidebar, setSidebar } = useContext(GlobalContext)
 
   const firstname = ((userData || {}).user || {}).firstName;
   const lastname = ((userData || {}).user || {}).lastName;
@@ -14,7 +15,9 @@ export const Header = () => {
     <div>
       <div className="header">
         <div className="header-logo">
+          <button onClick={()=>{setSidebar(!isSidebar)}}>Menu</button>
           <Link to="/">Tailor App</Link>
+         
         </div>
        
         <div className="header-menu">

@@ -8,6 +8,7 @@ import { MdDashboard } from "react-icons/md";
 
 export const UDashboard = () => {
   const { userData, setUserData } = useContext(GlobalContext);
+  const { isSidebar } = useContext(GlobalContext)
   const history = useHistory();
 
   const firstname = ((userData || {}).user || {}).firstName;
@@ -23,9 +24,11 @@ export const UDashboard = () => {
     history.push("/");
   };
 
+  
+
   return (
     <div>
-      <div className="sidebar">
+      <div className={isSidebar ? "sidebar":"hide-sidebar"}>
         <div className="sidebar-profile">
            <img src="/images/OurTeam/arman.PNG" alt="arman"></img>
            <span className="sidebar-name">{userName} </span>

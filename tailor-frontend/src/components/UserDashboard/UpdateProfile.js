@@ -1,4 +1,6 @@
-import React, { useContext} from "react";
+import Axios from "axios";
+import React, { useContext, useState} from "react";
+import { useHistory } from "react-router-dom";
 // import { Link, useHistory } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { GlobalContext } from "./../../context/GlobalContexts";
@@ -7,6 +9,47 @@ import { GlobalContext } from "./../../context/GlobalContexts";
 
 export const UpdateProfile = () => {
   const { userData} = useContext(GlobalContext);
+  
+  const [firstName, setFirstName] = useState(((userData || {}).user || {}).firstName);
+  const [lastName, setlastName] = useState(((userData || {}).user || {}).lastName);
+  const [email, setEmail] = useState(((userData || {}).user || {}).email);
+  const [phoneNumber, setPhoneNumber] = useState(((userData || {}).user || {}).phoneNumber);
+  const [gender, setGender] = useState(((userData || {}).user || {}).gender);
+  const [address, setAddress] = useState(((userData || {}).user || {}).address);
+  const [country, setCountry] = useState(((userData || {}).user || {}).country)
+  const [state, setState] = useState(((userData || {}).user || {}).state);
+  const [city, setCity] = useState(((userData || {}).user || {}).city);
+  const [zipcode, setZipCode] = useState(((userData || {}).user || {}).zipcode);
+  // const [error, setError] = useState();
+
+
+  const history = useHistory();
+
+  async function updateUser(e){
+    e.preventDefault();
+    
+    try {
+      const updateUser ={
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        gender,
+        address,
+        country,
+        state,
+        city,
+        zipcode,
+      }
+
+      const a = await Axios.post("/users/5fc28fd31610f4afd041bad8", updateUser);
+      console("user updated",a)
+      
+    } catch (err) {
+      
+    }
+
+  }
 
 
  
@@ -14,7 +57,7 @@ export const UpdateProfile = () => {
   return (
     <div className="form-container">
       
-      <form >
+      <form onSubmit = {updateUser}>
       <h2 className="text-center">Your profile</h2>
       {/* {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />} */}
         
@@ -25,6 +68,9 @@ export const UpdateProfile = () => {
           name="firstname"
           placeholder="Your name.."
           value={((userData || {}).user || {}).firstName}
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
         
        
         />
@@ -35,6 +81,9 @@ export const UpdateProfile = () => {
           name="lastname"
           placeholder="Your last name.."
           value={((userData || {}).user || {}).lastName}
+          onChange={(e) => {
+            setlastName(e.target.value);
+          }}
         />
 
         <label htmlFor="Email">Email</label>
@@ -43,6 +92,9 @@ export const UpdateProfile = () => {
           name="Email"
           placeholder="Email.."
           value={((userData || {}).user || {}).email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
         />
 
         
@@ -52,13 +104,18 @@ export const UpdateProfile = () => {
           name="phone number"
           placeholder="Phone number.."
           value={((userData || {}).user || {}).phoneNumber}
+          onChange={(e) => {
+            setPhoneNumber(e.target.value);
+          }}
          
         />
 
         <label htmlFor="gender">Gender</label>
         <select
           name="gender"
-       
+          onChange={(e) => {
+            setGender(e.target.value);
+          }}
         >
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -70,13 +127,18 @@ export const UpdateProfile = () => {
           name="address"
           placeholder="Address.."
           value={((userData || {}).user || {}).address}
+          onChange={(e) => {
+            setAddress(e.target.value);
+          }}
         
         />
 
         <label htmlFor="country">Country</label>
         <select
           name="country"
-        
+          onChange={(e) => {
+            setCountry(e.target.value);
+          }}
         >
           <option value="pakistan">Pakistan</option>
         </select>
@@ -84,7 +146,9 @@ export const UpdateProfile = () => {
         <label htmlFor="state">State</label>
         <select
           name="state"
-          
+          onChange={(e) => {
+            setState(e.target.value);
+          }}
         >
           <option value="pubjab">Pubjab</option>
         </select>
@@ -92,7 +156,9 @@ export const UpdateProfile = () => {
         <label htmlFor="city">City</label>
         <select
           name="city"
-        
+          onChange={(e) => {
+            setCity(e.target.value);
+          }}
         >
           <option value="attock">Attock</option>
         </select>
@@ -102,6 +168,9 @@ export const UpdateProfile = () => {
           type="text"
           name="zip code"
           placeholder="Your last name.."
+          onChange={(e) => {
+            setZipCode(e.target.value);
+          }}
          
         />
 
