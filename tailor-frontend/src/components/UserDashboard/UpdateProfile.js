@@ -1,35 +1,36 @@
 import Axios from "axios";
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import { Link, useHistory } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import { GlobalContext } from "./../../context/GlobalContexts";
-// import axios from 'axios';
-// import ErrorNotice from './../misc/errorNotices';
 
 export const UpdateProfile = () => {
-  const { userData} = useContext(GlobalContext);
-  
-  const [firstName, setFirstName] = useState(((userData || {}).user || {}).firstName);
-  const [lastName, setlastName] = useState(((userData || {}).user || {}).lastName);
+  const { userData } = useContext(GlobalContext);
+
+  const [firstName, setFirstName] = useState(
+    ((userData || {}).user || {}).firstName
+  );
+  const [lastName, setlastName] = useState(
+    ((userData || {}).user || {}).lastName
+  );
   const [email, setEmail] = useState(((userData || {}).user || {}).email);
-  const [phoneNumber, setPhoneNumber] = useState(((userData || {}).user || {}).phoneNumber);
+  const [phoneNumber, setPhoneNumber] = useState(
+    ((userData || {}).user || {}).phoneNumber
+  );
   const [gender, setGender] = useState(((userData || {}).user || {}).gender);
   const [address, setAddress] = useState(((userData || {}).user || {}).address);
-  const [country, setCountry] = useState(((userData || {}).user || {}).country)
-  const [state, setState] = useState(((userData || {}).user || {}).state);
-  const [city, setCity] = useState(((userData || {}).user || {}).city);
-  const [zipcode, setZipCode] = useState(((userData || {}).user || {}).zipcode);
+  const [country, setCountry] = useState("Pakistan");
+  const [state, setState] = useState("punjab");
+  const [city, setCity] = useState("attock");
+  const [zipCode, setZipCode] = useState("52100");
   // const [error, setError] = useState();
-
 
   const history = useHistory();
 
-  async function updateUser(e){
+  async function updateUser(e) {
     e.preventDefault();
-    
+
     try {
-      const updateUser ={
+      const updateUser = {
         firstName,
         lastName,
         email,
@@ -39,40 +40,33 @@ export const UpdateProfile = () => {
         country,
         state,
         city,
-        zipcode,
-      }
+        zipCode,
+      };
 
-      const a = await Axios.post("/users/5fc28fd31610f4afd041bad8", updateUser);
-      console("user updated",a)
-      
+      await Axios.put(`/users/${((userData || {}).user || {}).id}`, updateUser);
+
+      console.log("user update successfully");
+      history.push("/udashboard");
     } catch (err) {
-      
+      console.log("can not update", err);
     }
-
   }
-
-
- 
 
   return (
     <div className="form-container">
-      
-      <form onSubmit = {updateUser}>
-      <h2 className="text-center">Your profile</h2>
-      {/* {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />} */}
-        
-        
+      <form onSubmit={updateUser}>
+        <h2 className="text-center">Your profile</h2>
+        {/* {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />} */}
+
         <label htmlFor="fname">First Name</label>
         <input
           type="text"
           name="firstname"
           placeholder="Your name.."
-          value={((userData || {}).user || {}).firstName}
+          value={firstName}
           onChange={(e) => {
             setFirstName(e.target.value);
           }}
-        
-       
         />
 
         <label htmlFor="lname">Last Name</label>
@@ -80,7 +74,9 @@ export const UpdateProfile = () => {
           type="text"
           name="lastname"
           placeholder="Your last name.."
-          value={((userData || {}).user || {}).lastName}
+          value={lastName}
+          // value = {((userData || {}).user || {}).lastName}
+
           onChange={(e) => {
             setlastName(e.target.value);
           }}
@@ -91,23 +87,23 @@ export const UpdateProfile = () => {
           type="text"
           name="Email"
           placeholder="Email.."
-          value={((userData || {}).user || {}).email}
+          value={email}
+          // value={((userData || {}).user || {}).email}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
 
-        
         <label htmlFor="phone number">Phone Number</label>
         <input
           type="text"
           name="phone number"
           placeholder="Phone number.."
-          value={((userData || {}).user || {}).phoneNumber}
+          // value={((userData || {}).user || {}).phoneNumber}
+          value={phoneNumber}
           onChange={(e) => {
             setPhoneNumber(e.target.value);
           }}
-         
         />
 
         <label htmlFor="gender">Gender</label>
@@ -126,11 +122,11 @@ export const UpdateProfile = () => {
           type="text"
           name="address"
           placeholder="Address.."
-          value={((userData || {}).user || {}).address}
+          value={address}
+          // value={((userData || {}).user || {}).address}
           onChange={(e) => {
             setAddress(e.target.value);
           }}
-        
         />
 
         <label htmlFor="country">Country</label>
@@ -168,14 +164,13 @@ export const UpdateProfile = () => {
           type="text"
           name="zip code"
           placeholder="Your last name.."
+          // value={((userData || {}).user || {}).zipCode}
           onChange={(e) => {
             setZipCode(e.target.value);
           }}
-         
         />
 
         <input type="submit" value="Update Profile" />
-      
       </form>
     </div>
   );

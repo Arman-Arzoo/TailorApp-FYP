@@ -1,7 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-// import { Link } from "react-router-dom";
-import { GlobalContext } from "./../../context/GlobalContexts";
 import axios from 'axios';
 import ErrorNotice from './../misc/errorNotices';
 
@@ -22,7 +20,7 @@ export const SignUp = () => {
   const [zipcode, setZipCode] = useState();
   const [error, setError] = useState();
 
-  const { setUserData } = useContext(GlobalContext);
+
   const history = useHistory();
 
 
@@ -47,18 +45,8 @@ export const SignUp = () => {
 
       const a = await axios.post("/users/signup", newUser);
       console.log(a);
-      
-
-      const loginRes = await axios.post("/users/signin", {
-        email,
-        password
-      });
-      setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user
-      });
-      localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/udashboard")
+  
+      history.push("/signin")
    
      
     } catch (err) {

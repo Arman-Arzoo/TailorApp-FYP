@@ -13,7 +13,7 @@ router.post('/token-valid',userController.tokenValid);
 // get all user form database
 router.get('/',auth,userController.GetAllUser);
 // router for update user
-router.put('/:id',auth,userController.updateUser);
+router.put('/:id',userController.updateUser);
 
 
 module.exports = router
