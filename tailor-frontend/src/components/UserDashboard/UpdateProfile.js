@@ -53,7 +53,7 @@ export const UpdateProfile = () => {
   }
 
   return (
-    <div className="form-container">
+    <div className="form-container-update">
       <form onSubmit={updateUser}>
         <h2 className="text-center">Your profile</h2>
         {/* {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />} */}

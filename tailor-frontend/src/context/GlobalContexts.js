@@ -12,8 +12,6 @@ export const GlobalContext = createContext(globalData);
 
 // store data
 
-
-
 // provider component
 
 export const GlobalProvider = ({ children }) => {
