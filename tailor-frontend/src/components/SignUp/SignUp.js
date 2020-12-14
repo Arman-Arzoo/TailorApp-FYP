@@ -41,6 +41,7 @@ export const SignUp = () => {
         state,
         city,
         zipcode,
+      
       }
 
       const a = await axios.post("/users/signup", newUser);

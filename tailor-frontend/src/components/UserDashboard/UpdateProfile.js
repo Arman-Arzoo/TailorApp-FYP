@@ -1,7 +1,16 @@
 import Axios from "axios";
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import ErrorNotice from "../misc/errorNotices";
 import { GlobalContext } from "./../../context/GlobalContexts";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// import Uploady from "@rpldy/uploady";
+// import UploadButton from "@rpldy/upload-button";
+// import UploadPreview from "@rpldy/upload-preview";
+
+
+
 
 export const UpdateProfile = () => {
   const { userData } = useContext(GlobalContext);
@@ -22,9 +31,20 @@ export const UpdateProfile = () => {
   const [state, setState] = useState("punjab");
   const [city, setCity] = useState("attock");
   const [zipCode, setZipCode] = useState("52100");
-  // const [error, setError] = useState();
+  const [userImg, setUserImg] = useState("/images/Ourteam/arman.PNG");
+  const [error, setError] = useState();
+
+  // const filterBySize = (file) => {
+  //   //filter out images larger than 5MB
+  //   return file.size <= 5242880;
+  // };
+  
 
   const history = useHistory();
+
+
+ 
+ 
 
   async function updateUser(e) {
     e.preventDefault();
@@ -41,23 +61,45 @@ export const UpdateProfile = () => {
         state,
         city,
         zipCode,
+        userImg
       };
 
       await Axios.put(`/users/${((userData || {}).user || {}).id}`, updateUser);
 
       console.log("user update successfully");
-      history.push("/udashboard");
+      history.push("/udashboard/update-profile");
     } catch (err) {
-      console.log("can not update", err);
+      err.response.data.msg && setError(err.response.data.msg);
+      
     }
   }
 
   return (
-    <div className="form-container-update">
-      <form onSubmit={updateUser}>
-        <h2 className="text-center">Your profile</h2>
-        {/* {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />} */}
+    <div >
+      <h2 className="text-center">Your Profile</h2>
+      <ToastContainer />
+      <div className="form-container-update"> 
+      <div className="user-profile-pic">
+            <img src={((userData || {}).user || {}).userImg} alt="jfkds"></img>
+            <button>uplaod</button>
+          
+          
 
+
+            {/* <Uploady
+              destination={{ url: "/images/profilePic/"}}
+              fileFilter={filterBySize}
+              accept="image/*"
+              >
+              <UploadButton />
+              <UploadPreview />   
+            </Uploady> */}
+      </div>
+      <div className="user-update-form">
+      <form onSubmit={updateUser}>
+     
+        
+       
         <label htmlFor="fname">First Name</label>
         <input
           type="text"
@@ -81,6 +123,10 @@ export const UpdateProfile = () => {
             setlastName(e.target.value);
           }}
         />
+         <label htmlFor="fname">Update Photo</label>
+       
+        <input value={userImg} type="text" onChange={(e)=>{setUserImg(e.target.value)}}></input>
+    
 
         <label htmlFor="Email">Email</label>
         <input
@@ -169,9 +215,16 @@ export const UpdateProfile = () => {
             setZipCode(e.target.value);
           }}
         />
+        {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />}
 
         <input type="submit" value="Update Profile" />
       </form>
+      </div>
+    </div>
+     
+        
+    <br/>
+    <br/>
     </div>
   );
 };

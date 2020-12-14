@@ -476,16 +476,45 @@ div.content {
 }
 
 
+/* update profile user dash */
 .form-container-update{
-  display: flex;
-  justify-content: space-around;
+ display: flex;
+ justify-content: space-around;
   background-color: white;
   padding: 3rem;
   margin: 0 auto;
   box-shadow: 0 0 5px;
+
+  
+}
+/* @user-profile-pic */
+.user-profile-pic {
+  display: flex;
+  flex-direction: column;
+  
+}
+.user-profile-pic img{
+  width: 250px;
+  height: 250px;
+  border: 4px solid #1d4354;
 }
 
-.form-container-update input[type=text],input[type=password],select {
+.user-profile-pic button{
+  background-color: #1d4354;
+  margin: 2rem;
+  padding: 0.5rem 0;
+  border-radius: 10px;
+  color: white;
+  font-size: large;
+  width: auto;
+  
+}
+
+.user-update-form{
+  padding: 0 5rem ;
+}
+
+.form-container-update input[type=text],input[type=password],input[type=file],select {
   
   width: 100%;
   padding: 12px 20px;
