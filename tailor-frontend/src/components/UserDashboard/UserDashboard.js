@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const MyOrder = () => {
+export const UserDashboard = () => {
     return (
         <div>
-            My order
+            User DashBoard
         </div>
     )
 }

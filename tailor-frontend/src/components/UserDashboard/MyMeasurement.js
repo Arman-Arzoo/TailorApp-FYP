@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const MyOrder = () => {
+export const MyMeasurement = () => {
     return (
         <div>
-            My order
+            Your Measurement
         </div>
     )
 }

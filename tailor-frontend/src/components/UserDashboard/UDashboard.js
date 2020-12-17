@@ -5,6 +5,9 @@ import { GlobalContext } from "./../../context/GlobalContexts";
 import { UpdateProfile } from "./UpdateProfile";
 import { RiLogoutCircleFill } from "react-icons/ri";
 import { MdDashboard } from "react-icons/md";
+import { MyMeasurement } from "./MyMeasurement";
+import { UserDashboard } from "./UserDashboard";
+import { HireTailor } from "./HireTailor";
 
 export const UDashboard = () => {
   const { userData, setUserData } = useContext(GlobalContext);
@@ -35,7 +38,7 @@ export const UDashboard = () => {
         </div>
         <hr/>
        
-        <Link to="/udashboard/dashboard">
+        <Link to="/udashboard">
          
           <span>
             <MdDashboard/>
@@ -67,14 +70,14 @@ export const UDashboard = () => {
 
       <div className="content">
         <Route exact path="/udashboard/myorder" component={MyOrder}></Route>
-        <Route path="/udashboard/my-measurement" component={MyOrder}></Route>
+        <Route path="/udashboard/my-measurement" component={MyMeasurement}></Route>
         <Route
           path="/udashboard/update-profile"
           component={UpdateProfile}
         ></Route>
-        <Route path="/udashboard/hire-tailor" component={MyOrder}></Route>
+        <Route path="/udashboard/hire-tailor" component={HireTailor}></Route>
         <Route path="/udashboard/pick-up-service" component={MyOrder}></Route>
-        <Route path="/udashboard/dashboard" component={MyOrder}></Route>
+        <Route exact path="/udashboard" component={UserDashboard}></Route>
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ErrorNotice from "../misc/errorNotices";
 import { GlobalContext } from "./../../context/GlobalContexts";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 // import Uploady from "@rpldy/uploady";
 // import UploadButton from "@rpldy/upload-button";
 // import UploadPreview from "@rpldy/upload-preview";
@@ -77,7 +77,7 @@ export const UpdateProfile = () => {
   return (
     <div >
       <h2 className="text-center">Your Profile</h2>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <div className="form-container-update"> 
       <div className="user-profile-pic">
             <img src={((userData || {}).user || {}).userImg} alt="jfkds"></img>
