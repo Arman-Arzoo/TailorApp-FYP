@@ -228,6 +228,8 @@ exports.GetAllUser = async (req, res) => {
   }
 };
 
+
+
 // update user profile
 
 // @disc   put all Users
@@ -266,3 +268,10 @@ exports.updateUser = async (req, res) => {
 
 
 };
+
+
+// User submit measurement
+
+// @disc   post all Users
+// @Route  post /users/mymesurement
+// @acess  Public
