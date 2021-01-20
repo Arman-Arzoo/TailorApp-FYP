@@ -15,7 +15,7 @@ export const Header = () => {
     <div>
       <div className="header">
         <div className="header-logo">
-          <button onClick={()=>{setSidebar(!isSidebar)}}>Menu</button>
+          {/* <button onClick={()=>{setSidebar(!isSidebar)}}>Menu</button> */}
           <Link to="/">Tailor App</Link>
          
         </div>
