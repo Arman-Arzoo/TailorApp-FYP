@@ -1,0 +1,83 @@
+/* @My__measurement */
+
+
+.my__measurement{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+.form-measurement{
+    box-shadow: 0 0 5px;
+    width: 30%;
+    padding: 2rem;
+}
+
+.form-measurement input[type=text],input[type=submit],select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    /* display: inline-block; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+  }
+
+  .demo{
+    flex-grow: 8;
+    margin: 0 1rem;
+    color: rebeccapurple;
+    box-shadow: 0 0 5px;
+  }
+
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin:0;
+    padding:0;
+    width: 100%;
+  }
+  table tr {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+  table th, table td {
+    padding: 10px;
+    text-align: center;
+  }
+  table th {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+    table thead {
+      display: none;
+    }
+    table tr {
+      border-bottom: 2px solid #ddd;
+      display: block;
+      margin-bottom: 10px;
+    }
+    table td {
+      border-bottom: 1px dotted #ccc;
+      display: block;
+      font-size: 13px;
+      text-align: right;
+    }
+    table td:last-child {
+      border-bottom: 0;
+    }
+    table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
