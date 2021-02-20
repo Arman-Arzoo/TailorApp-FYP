@@ -14,6 +14,15 @@ const userSchema = new mongoose.Schema({
     city:{type:String,required:true},
     zipCode:{type:Number},
     userImg:{type:String},
+    userMeasurement:[{
+        fullLength:{type:String},
+        shoulder:{type:String},
+        Chest:{type:String},
+        SleeveLength:{type:String},
+        WaistLength:{type:String},
+        Neck:{type:String},
+        Comment:{type:String}
+    }]
 
 })
 

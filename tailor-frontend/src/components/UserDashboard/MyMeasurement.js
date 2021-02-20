@@ -13,7 +13,7 @@ export const MyMeasurement = () => {
             <input
               type="text"
               name="firstname"
-              placeholder="Your name.."
+              placeholder="Full length.."
               //    value={firstName}
               //    onChange={(e) => {
               //      setFirstName(e.target.value);
@@ -24,7 +24,7 @@ export const MyMeasurement = () => {
             <input
               type="text"
               name="lastname"
-              //    placeholder="Your last name.."
+              placeholder="Shoulder.."
               //    value={lastName}
               // value = {((userData || {}).user || {}).lastName}
 
@@ -40,7 +40,7 @@ export const MyMeasurement = () => {
             <input
               type="text"
               name="Email"
-              placeholder="Email.."
+              placeholder="Chest/Brust.."
               //    value={email}
               //    // value={((userData || {}).user || {}).email}
               //    onChange={(e) => {
@@ -52,7 +52,7 @@ export const MyMeasurement = () => {
             <input
               type="text"
               name="phone number"
-              placeholder="Phone number.."
+              placeholder="Sleeve length.."
               // value={((userData || {}).user || {}).phoneNumber}
               //    value={phoneNumber}
               //    onChange={(e) => {
@@ -64,7 +64,7 @@ export const MyMeasurement = () => {
             <input
               type="text"
               name="address"
-              placeholder="Address.."
+              placeholder="Waist length.."
               //    value={address}
               // value={((userData || {}).user || {}).address}
               //    onChange={(e) => {
@@ -76,7 +76,7 @@ export const MyMeasurement = () => {
             <input
               type="text"
               name="zip code"
-              placeholder="Your last name.."
+              placeholder="Neck Measurement.."
               // value={((userData || {}).user || {}).zipCode}
               //    onChange={(e) => {
               //      setZipCode(e.target.value);
@@ -87,7 +87,7 @@ export const MyMeasurement = () => {
             <input
               type="text"
               name="zip code"
-              placeholder="Your last name.."
+              placeholder="Comment.."
               // value={((userData || {}).user || {}).zipCode}
               //    onChange={(e) => {
               //      setZipCode(e.target.value);

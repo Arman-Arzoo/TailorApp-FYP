@@ -221,7 +221,10 @@ exports.GetAllUser = async (req, res) => {
       city: user.city,
       zipCode: user.zipCode,
       userImg: user.userImg,
-      id: user._id
+      id: user._id,
+      fulLength:user.userMeasurement.fullLength
+      
+     
     });
   } catch (err) {
     res.status(400).send("can not get user");
@@ -275,3 +278,34 @@ exports.updateUser = async (req, res) => {
 // @disc   post all Users
 // @Route  post /users/mymesurement
 // @acess  Public
+
+exports.userMeasurement = async (req , res)=>{
+
+
+  User.findById(req.params.id, async function (err, user) {
+    if (!user) {
+      res.status(404).json({ msg: "No User" });
+    } else {
+      user.userMeasurement.fullLength = req.body.fullLength;
+      user.userMeasurement.shoulder = req.body.shoulder;
+      user.userMeasurement.Chest = req.body.Chest;
+      user.userMeasurement.SleeveLength = req.body.SleeveLength;
+      user.userMeasurement.WaistLength = req.body.WaistLength;
+      user.userMeasurement.Neck = req.body.Neckh;
+      user.userMeasurement.Comment = req.body.Comment;
+     
+      user.save().then((user) => {
+          res.status(200).json({ msg: "Add Measurement Successfully"});
+        
+        })
+        .catch((err) => {
+        
+          res.status(400).json({ msg: "Update Not possible"});
+        
+        });
+    }
+ 
+  });
+
+
+}
