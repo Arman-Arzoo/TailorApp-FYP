@@ -222,7 +222,7 @@ exports.GetAllUser = async (req, res) => {
       zipCode: user.zipCode,
       userImg: user.userImg,
       id: user._id,
-      fulLength:user.userMeasurement.fullLength
+      
       
      
     });
@@ -282,6 +282,13 @@ exports.updateUser = async (req, res) => {
 exports.userMeasurement = async (req , res)=>{
 
 
+
+
+
+
+
+
+
   User.findById(req.params.id, async function (err, user) {
     if (!user) {
       res.status(404).json({ msg: "No User" });
@@ -300,7 +307,7 @@ exports.userMeasurement = async (req , res)=>{
         })
         .catch((err) => {
         
-          res.status(400).json({ msg: "Update Not possible"});
+          res.status(400).json({ msg: "Update Not possible", err});
         
         });
     }
