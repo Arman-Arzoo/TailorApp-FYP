@@ -62,7 +62,7 @@ export const SignUp = () => {
       
       <form onSubmit={user_Registraion}>
       <h2 className="text-center">Create An Account</h2>
-      {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />}
+      
         
         
         <label htmlFor="fname">First Name</label>
@@ -185,6 +185,8 @@ export const SignUp = () => {
             setZipCode(e.target.value);
           }}
         />
+
+         {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />}  
 
         <input type="submit" value="Create An Account" />
         <Link to="/signin">Already have an account</Link>

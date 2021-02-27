@@ -22,6 +22,9 @@
   "homepage": "https://github.com/Arman-Arzoo/TailorApp-FYP#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "consola": "^2.15.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
@@ -32,6 +35,8 @@
     "nodemailer": "^6.4.16",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
     "validate-phone-number-node-js": "0.0.1"
   }
 }

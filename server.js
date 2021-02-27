@@ -1,3 +1,4 @@
+
 const express = require ("express");
 const mongoose = require ("mongoose");
 const cors = require("cors");
@@ -11,14 +12,13 @@ app.use(express.json());
 app.use(cors());
 
 
-const PORT = process.env.PORT || 4000
+const { DB, PORT } = require("./config");
 
-
-app.listen(PORT,()=>{console.log("Server Started at http://localhost:4000")});
+app.listen(PORT,()=>{console.log("Server Started at http://localhost:5000")});
 
 // set up mongoose
 
-const URI = process.env.URI || "mongodb://127.0.0.1:27017/tailorFyp";
+const URI = DB || "mongodb://127.0.0.1:27017/tailorFyp";
 mongoose.connect(URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
