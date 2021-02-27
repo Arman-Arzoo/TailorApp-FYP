@@ -16,7 +16,7 @@ app.use(cors());
 
 const { DB, PORT } = require("./config");
 
-app.listen(PORT,()=>{console.log("Server Started at http://localhost:5000")});
+app.listen(PORT,()=>{console.log("Server Started at http://localhost:4000")});
 
 // set up mongoose
 
