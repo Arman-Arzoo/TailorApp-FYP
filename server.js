@@ -5,6 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const userRoute = require('./routes/userRoute')
 const tailorRoute = require('./routes/tailorRoutes')
+const adminRoute = require("./routes/adminRoute")
 dotenv.config();
 
 // set up server
@@ -35,6 +36,7 @@ mongoose.connect(URI,{
 
 app.use('/users',userRoute);
 app.use('/tailors',tailorRoute);
+app.use('/admin',adminRoute);
 
 
 
