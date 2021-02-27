@@ -6,18 +6,18 @@ import ErrorNotice from './../misc/errorNotices';
 export const TailorSignUp = () => {
   // const { userRegistraion } = useContext(GlobalContext);
 
-  const [fullName, setFulltName] = useState();
-//   const [lastName, setlastName] = useState();
+  const [firstName, setfirstName] = useState();
+  const [lastName, setlastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-//   const [confirmedPassword, setconfirmedPassword] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [gender, setGender] = useState("male");
-  const [address, setAddress] = useState();
-  const [country, setCountry] = useState("pakistan")
-  const [state, setState] = useState("pubjab");
-  const [city, setCity] = useState("attock");
-  const [zipcode, setZipCode] = useState();
+  const [confirmedPassword, setconfirmedPassword] = useState();
+//   const [phoneNumber, setPhoneNumber] = useState();
+//   const [gender, setGender] = useState("male");
+//   const [address, setAddress] = useState();
+//   const [country, setCountry] = useState("pakistan")
+//   const [state, setState] = useState("pubjab");
+//   const [city, setCity] = useState("attock");
+//   const [zipcode, setZipCode] = useState();
   const [error, setError] = useState();
 
 
@@ -29,7 +29,8 @@ export const TailorSignUp = () => {
 
     try {
       const newTailor ={
-        fullName,
+        firstName,
+        lastName,
         email,
         password,
         phoneNumber,
@@ -63,17 +64,17 @@ export const TailorSignUp = () => {
       
         
         
-        <label htmlFor="fname">FUll Name</label>
+        <label htmlFor="fname">First Name</label>
         <input
           type="text"
-          name="fullname"
+          name="firstname"
           placeholder="Your name.."
           onChange={(e) => {
-            setFulltName(e.target.value);
+            setfirstName(e.target.value);
           }}
         />
 
-        {/* <label htmlFor="lname">Last Name</label>
+        <label htmlFor="lname">Last Name</label>
         <input
           type="text"
           name="lastname"
@@ -81,7 +82,7 @@ export const TailorSignUp = () => {
           onChange={(e) => {
             setlastName(e.target.value);
           }}
-        /> */}
+        />
 
         <label htmlFor="Email">Email</label>
         <input
@@ -103,7 +104,7 @@ export const TailorSignUp = () => {
           }}
         />
 
-        {/* <label htmlFor="lname">Confirm password</label>
+        <label htmlFor="lname">Confirm password</label>
         <input
           type="password"
           name="confirm password"
@@ -111,9 +112,9 @@ export const TailorSignUp = () => {
           onChange={(e) => {
             setconfirmedPassword(e.target.value);
           }}
-        /> */}
+        />
 
-        <label htmlFor="phone number">Phone Number</label>
+        {/* <label htmlFor="phone number">Phone Number</label>
         <input
           type="text"
           name="phone number"
@@ -182,7 +183,7 @@ export const TailorSignUp = () => {
           onChange={(e) => {
             setZipCode(e.target.value);
           }}
-        />
+        /> */}
 
          {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />}  
 
