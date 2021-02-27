@@ -4,7 +4,7 @@ import { GlobalContext } from "./../../context/GlobalContexts";
 import axios from 'axios';
 import ErrorNotice from "../misc/errorNotices";
 
-export const SignIn = () => {
+export const TailorSignIn = () => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();

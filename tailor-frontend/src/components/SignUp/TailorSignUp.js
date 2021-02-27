@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import ErrorNotice from './../misc/errorNotices';
 
-export const SignUp = () => {
+export const TailorSignUp = () => {
   // const { userRegistraion } = useContext(GlobalContext);
 
   const [fullName, setFulltName] = useState();
@@ -28,8 +28,8 @@ export const SignUp = () => {
     e.preventDefault();
 
     try {
-      const newUser ={
-        FullName,
+      const newTailor ={
+        fullName,
         email,
         password,
         phoneNumber,
@@ -69,7 +69,7 @@ export const SignUp = () => {
           name="fullname"
           placeholder="Your name.."
           onChange={(e) => {
-            setFirstName(e.target.value);
+            setFulltName(e.target.value);
           }}
         />
 
