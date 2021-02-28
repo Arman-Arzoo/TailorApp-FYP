@@ -11,20 +11,14 @@ export const TailorSignUp = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmedPassword, setconfirmedPassword] = useState();
-//   const [phoneNumber, setPhoneNumber] = useState();
-//   const [gender, setGender] = useState("male");
-//   const [address, setAddress] = useState();
-//   const [country, setCountry] = useState("pakistan")
-//   const [state, setState] = useState("pubjab");
-//   const [city, setCity] = useState("attock");
-//   const [zipcode, setZipCode] = useState();
+
   const [error, setError] = useState();
 
 
   const history = useHistory();
 
 
-  async function user_Registraion(e) {
+  async function tailor_Registraion(e) {
     e.preventDefault();
 
     try {
@@ -33,20 +27,15 @@ export const TailorSignUp = () => {
         lastName,
         email,
         password,
-        phoneNumber,
-        gender,
-        address,
-        country,
-        state,
-        city,
-        zipcode,
+        confirmedPassword
+        
       
       }
 
-      const a = await axios.post("/tailor/signup", newTailor);
+      const a = await axios.post("/tailors/signup", newTailor);
       console.log(a);
   
-      history.push("/signin")
+      history.push("/tailors/signin")
    
      
     } catch (err) {
@@ -59,7 +48,7 @@ export const TailorSignUp = () => {
   return (
     <div className="form-container">
       
-      <form onSubmit={user_Registraion}>
+      <form onSubmit={tailor_Registraion}>
       <h2 className="text-center">Create An Account</h2>
       
         
@@ -114,81 +103,10 @@ export const TailorSignUp = () => {
           }}
         />
 
-        {/* <label htmlFor="phone number">Phone Number</label>
-        <input
-          type="text"
-          name="phone number"
-          placeholder="Phone number.."
-          onChange={(e) => {
-            setPhoneNumber(e.target.value);
-          }}
-        />
-
-        <label htmlFor="gender">Gender</label>
-        <select
-          name="gender"
-          onChange={(e) => {
-            setGender(e.target.value);
-          }}
-        >
-          <option selected value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-
-        <label htmlFor="address">address</label>
-        <input
-          type="text"
-          name="address"
-          placeholder="Address.."
-          onChange={(e) => {
-            setAddress(e.target.value);
-          }}
-        />
-
-        <label htmlFor="country">Country</label>
-        <select
-          name="country"
-          onChange={(e) => {
-            setCountry(e.target.value);
-          }}
-        >
-          <option selected value="pakistan">Pakistan</option>
-        </select>
-
-        <label htmlFor="state">State</label>
-        <select
-          name="state"
-          onChange={(e) => {
-            setState(e.target.value);
-          }}
-        >
-          <option selected value="pubjab">Pubjab</option>
-        </select>
-
-        <label htmlFor="city">City</label>
-        <select
-          name="city"
-          onChange={(e) => {
-            setCity(e.target.value);
-          }}
-        >
-          <option selected value="attock">Attock</option>
-        </select>
-
-        <label htmlFor="phone number">Phone Number</label>
-        <input
-          type="text"
-          name="phone number"
-          placeholder="Phone number.."
-          onChange={(e) => {
-            setZipCode(e.target.value);
-          }}
-        /> */}
-
          {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />}  
 
         <input type="submit" value="Create An Account" />
-        <Link to="/signin">Already have an account</Link>
+        <Link to="/tailors/signin">Already have an account</Link>
       </form>
     </div>
   );

@@ -5,6 +5,7 @@ import axios from 'axios';
 // All data
 const globalData = {
   userDatas: [],
+  tailorData: []
 };
 
 // create context
@@ -48,6 +49,12 @@ const [userData, setUserData] = useState({
   token: undefined,
   user: undefined
 });
+
+// const [tailorData, setTailorData] = useState({
+
+//   token: undefined,
+//   tailor:undefined
+// })
 
 useEffect(() => {
   const checkLoggedIn = async () => {

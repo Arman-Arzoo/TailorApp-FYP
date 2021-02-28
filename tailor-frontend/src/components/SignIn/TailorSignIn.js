@@ -18,15 +18,15 @@ export const TailorSignIn = () => {
 
     try {
       const logInTailor = { email, password };
-      const loginRes = await axios.post("/users/signin", logInTailor);
+      const loginRes = await axios.post("/tailors/signin", logInTailor);
 
       setUserData({
         token: loginRes.data.token,
-        user: loginRes.data.user
+        user: loginRes.data.tailor
       });
 
       localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/udashboard");
+      history.push("/tailor/udashboard");
 
     }
     catch (err) {
