@@ -134,3 +134,34 @@ exports.TailorLogin = async (req, res) => {
       tailor,
     });
   };
+
+
+  
+// @disc   Get all Users
+// @Route  Post /tailors/token-valid
+// @acess  Public
+
+  exports.tokenValid = async (req, res) => {
+    try {
+      const token = req.header("x-auth-token");
+  
+      if (!token) {
+        return res.json(false);
+      }
+      let JWT_SECRET = "youronwerisarman";
+      const verified = jwt.verify(token, JWT_SECRET);
+  
+      if (!verified) {
+        return res.json(false);
+      }
+  
+      const tailor = await Tailor.findById(verified.id);
+      if (!tailor) {
+        return res.json(false);
+      } else {
+        return res.json(true);
+      }
+    } catch (err) {
+      res.status(400).send("No token");
+    }
+  };

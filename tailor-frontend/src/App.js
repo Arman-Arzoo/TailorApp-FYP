@@ -7,10 +7,11 @@ import { SignUp } from "./components/SignUp/SignUp";
 import {TailorSignUp} from "./components/SignUp/TailorSignUp"
 // import { TailorSignUp  } from "./components/SignUp/TailorSignUp ";
 import { SignIn } from "./components/SignIn/SignIn";
-import {TailorSignIn} from "./components/SignIn/TailorSignIn"
+import { TailorSignIn} from "./components/SignIn/TailorSignIn"
 // import { TailorSignIn } from "./components/SignIn/TailorSignIn";
 import { UDashboard } from "./components/UserDashboard/UDashboard";
-import {  GlobalProvider} from "./context/GlobalContexts";
+import { TDashboard}  from "./components/TailorDashboard/TDashboard"
+import {GlobalProvider} from "./context/GlobalContexts";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/tailors/signup" component={TailorSignUp}></Route>
             <Route path="/tailors/signin" component={TailorSignIn}></Route>
             <Route path="/udashboard" component={UDashboard}></Route>
+            <Route path="/tdashboard" component={TDashboard}></Route>
           </main>
         
         <Footer name="Arman ALi" />

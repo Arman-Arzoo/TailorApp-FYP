@@ -26,7 +26,7 @@ export const TailorSignIn = () => {
       });
 
       localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/tailor/udashboard");
+      history.push("/tdashboard");
 
     }
     catch (err) {

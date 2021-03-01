@@ -4,8 +4,8 @@ import axios from 'axios';
 
 // All data
 const globalData = {
-  userDatas: [],
-  tailorData: []
+  // Data: [],
+ 
 };
 
 // create context
@@ -50,11 +50,9 @@ const [userData, setUserData] = useState({
   user: undefined
 });
 
-// const [tailorData, setTailorData] = useState({
 
-//   token: undefined,
-//   tailor:undefined
-// })
+
+
 
 useEffect(() => {
   const checkLoggedIn = async () => {
@@ -66,17 +64,21 @@ useEffect(() => {
     }
 
     const tokenRes = await axios.post('/users/token-valid', null, { headers: { "x-auth-token": token } });
-
-
+  
+    
       if (tokenRes.data) {
         const userRes = axios.get('/users/', { headers: { "x-auth-token": token } });
-
+       
         setUserData({
           token,
           user: (await userRes).data
 
         });
+       
       }
+
+    
+   
 
 
     };
@@ -94,6 +96,8 @@ useEffect(() => {
        setUserData,
        isSidebar,
        setSidebar
+       
+      
        
       }}
     >

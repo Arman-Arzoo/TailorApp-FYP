@@ -11,4 +11,4 @@ const tailorSchema = new mongoose.Schema({
 })
 
 
-module.exports = Tailor = mongoose.model("tailors",tailorSchema);
+module.exports = Tailor = mongoose.model("tailor",tailorSchema);
