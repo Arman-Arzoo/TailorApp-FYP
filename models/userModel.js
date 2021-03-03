@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     city:{type:String,required:true},
     zipCode:{type:Number},
     userImg:{type:String},
+    role: {type:String,default:"user", required:true,enum:['user','tailor','admin'] }
     // userMeasurement:[{
     //     fullLength:{type:String},
     //     shoulder:{type:String},
