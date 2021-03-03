@@ -6,7 +6,7 @@ export const Footer = ({name}) => {
     const { userData } = useContext(GlobalContext);
     return (
         <div className="footer">
-             <p>CopyRight @ 2020. All right reserved. Tailor App</p>
+             <p>CopyRight @ 2021. All right reserved. Tailor App</p>
              {userData.user ? (
                  <>
                  </>

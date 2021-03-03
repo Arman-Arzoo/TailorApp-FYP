@@ -4,16 +4,14 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { HomeScreen } from "./components/Home/HomeScreen";
 import { SignUp } from "./components/SignUp/SignUp";
-import {TailorSignUp} from "./components/SignUp/TailorSignUp"
-import {AdminSignUp} from "./components/SignUp/AdminSignUp"
-// import { TailorSignUp  } from "./components/SignUp/TailorSignUp ";
+import {TailorSignUp} from "./components/SignUp/TailorSignUp";
+import {AdminSignUp} from "./components/SignUp/AdminSignUp";
 import { SignIn } from "./components/SignIn/SignIn";
 import { TailorSignIn} from "./components/SignIn/TailorSignIn"
-import {AdminSignIn} from "./components/SignIn/AdminSignIn"
-// import { TailorSignIn } from "./components/SignIn/TailorSignIn";
+import {AdminSignIn} from "./components/SignIn/AdminSignIn";
 import { UDashboard } from "./components/UserDashboard/UDashboard";
-import { TDashboard}  from "./components/TailorDashboard/TDashboard"
-import { ADashboard}  from "./components/AdminDashboard/ADashbaord"
+import { TDashboard}  from "./components/TailorDashboard/TDashboard";
+import { ADashboard}  from "./components/AdminDashboard/ADashbaord";
 import {GlobalProvider} from "./context/GlobalContexts";
 
 
