@@ -4,7 +4,6 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { HomeScreen } from "./components/Home/HomeScreen";
 import { SignUp } from "./components/SignUp/SignUp";
-import {TailorSignUp} from "./components/SignUp/TailorSignUp";
 import {AdminSignUp} from "./components/SignUp/AdminSignUp";
 import { SignIn } from "./components/SignIn/SignIn";
 import { TailorSignIn} from "./components/SignIn/TailorSignIn"
@@ -30,7 +29,6 @@ function App() {
             <Route path="/" exact component={HomeScreen}></Route>
             <Route path="/signup" component={SignUp}></Route>
             <Route path="/signin" component={SignIn}></Route>
-            <Route path="/tailors/signup" component={TailorSignUp}></Route>
             <Route path="/tailors/signin" component={TailorSignIn}></Route>
             <Route path="/admin/signup" component={AdminSignUp}></Route>
             <Route path="/admin/signin" component={AdminSignIn}></Route>

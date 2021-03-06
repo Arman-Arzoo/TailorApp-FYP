@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link,Route,  useHistory } from "react-router-dom";
-import { addTailor } from "../AdminDashboard/AddTailor";
+import { AddTailor } from "../AdminDashboard/AddTailor";
 import { GlobalContext } from "./../../context/GlobalContexts";
 // import { UpdateProfile } from "./UpdateProfile";
 import { RiLogoutCircleFill } from "react-icons/ri";
@@ -72,7 +72,7 @@ export const ADashboard = () => {
       </div>
       
       <div className="content">
-        <Route exact path="/adashboard/addtailor" component={addTailor}></Route>
+        <Route exact path="/adashboard/addtailor" component={AddTailor}></Route>
         {/* <Route path="/udashboard/my-measurement" component={MyMeasurement}></Route>
         <Route
           path="/udashboard/update-profile"

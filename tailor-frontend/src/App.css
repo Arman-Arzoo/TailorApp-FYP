@@ -343,6 +343,7 @@ text-shadow: 3px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
     padding: 3rem;
     margin: 3.5rem 35rem;
     box-shadow: 0 0 5px;
+    border-radius: 2%;
     
   }
 

@@ -101,32 +101,30 @@ export const MyMeasurement = () => {
           {/* end */}
         </div>
         <div className="demo">
-
-        <table>
-  <thead>
-    <tr>
-      <th>Payment</th>
-      <th>Issue Date</th>
-      <th>Amount</th>
-      <th>Period</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td data-label="Payment">Payment #1</td>
-      <td data-label="Issue Date">02/01/2015</td>
-      <td data-label="Amount">$2,311</td>
-      <td data-label="Period">01/01/2015 - 01/31/2015</td>
-    </tr>
-    <tr>
-      <td data-label="Payment">Payment #2</td>
-      <td data-label="Issue Date">03/01/2015</td>
-      <td data-label="Amount">$3,211</td>
-      <td data-label="Period">02/01/2015 - 02/28/2015</td>
-    </tr>
-  </tbody>
-</table>
-           
+          <table>
+            <thead>
+              <tr>
+                <th>Payment</th>
+                <th>Issue Date</th>
+                <th>Amount</th>
+                <th>Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Payment">Payment #1</td>
+                <td data-label="Issue Date">02/01/2015</td>
+                <td data-label="Amount">$2,311</td>
+                <td data-label="Period">01/01/2015 - 01/31/2015</td>
+              </tr>
+              <tr>
+                <td data-label="Payment">Payment #2</td>
+                <td data-label="Issue Date">03/01/2015</td>
+                <td data-label="Amount">$3,211</td>
+                <td data-label="Period">02/01/2015 - 02/28/2015</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

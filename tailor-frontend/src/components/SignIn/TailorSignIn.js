@@ -6,12 +6,12 @@ import ErrorNotice from "../misc/errorNotices";
 
 export const TailorSignIn = () => {
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [error, setError] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [error, setError] = useState();
 
-  const { setUserData } = useContext(GlobalContext);
-  const history = useHistory();
+    const { setUserData } = useContext(GlobalContext);
+    const history = useHistory();
 
   const submit = async (e) => {
     e.preventDefault();
