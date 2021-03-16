@@ -1,23 +1,70 @@
-import React from "react";
+import React, {  useContext, useState } from "react";
 import "../../sytles/userMeasurement.css";
+import ErrorNotice from "../misc/errorNotices";
+import { useHistory } from "react-router-dom";
+import { GlobalContext } from "./../../context/GlobalContexts";
+import Axios from "axios";
+
 
 export const MyMeasurement = () => {
+  const [  fullLength, setfullLength] = useState();
+  const [ shoulder, setshoulder] = useState();
+  const [ Chest, setChest] = useState();
+  const [ SleeveLength, setSleeveLength] = useState();
+  const [  WaistLength, setWaistLength] = useState();
+  const [ Neck, setNect] = useState();
+  const [ Comment, setComment] = useState();
+  const [error, setError] = useState();
+  const history = useHistory();
+
+  const { UserData } = useContext(GlobalContext);
+
+
+  const submitMeasurement = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userMeasurments = {  fullLength,
+        shoulder,
+        Chest,
+        SleeveLength,
+        WaistLength,
+        Neck,
+        Comment };
+
+        await Axios.post("/users/udashboard/my-measurement/", userMeasurments);
+        console.log(userMeasurments)
+      
+      // setUserData({
+      //       measurement:userMeasurementRes.data.measurement
+      // });
+
+    
+      history.push("/udashboard");
+
+    }
+    catch (err) {
+      err.response.data.msg && setError(err.response.data.msg);
+    }
+  }
+
+
   return (
     <div>
       <h2 className="text-center">My Measurement</h2>
       <div className="my__measurement">
         <div className="form-measurement">
           {/* strt */}
-          <form>
+          <form onSubmit = {submitMeasurement}>
             <label htmlFor="fname">Full length</label>
             <input
               type="text"
               name="firstname"
               placeholder="Full length.."
               //    value={firstName}
-              //    onChange={(e) => {
-              //      setFirstName(e.target.value);
-              //    }}
+                 onChange={(e) => {
+                   setfullLength(e.target.value);
+                 }}
             />
 
             <label htmlFor="lname">shoulder</label>
@@ -28,9 +75,9 @@ export const MyMeasurement = () => {
               //    value={lastName}
               // value = {((userData || {}).user || {}).lastName}
 
-              //    onChange={(e) => {
-              //      setlastName(e.target.value);
-              //    }}
+                 onChange={(e) => {
+                   setshoulder(e.target.value);
+                 }}
             />
             {/* <label htmlFor="fname">Update Photo</label>
     
@@ -43,9 +90,9 @@ export const MyMeasurement = () => {
               placeholder="Chest/Brust.."
               //    value={email}
               //    // value={((userData || {}).user || {}).email}
-              //    onChange={(e) => {
-              //      setEmail(e.target.value);
-              //    }}
+                 onChange={(e) => {
+                   setChest(e.target.value);
+                 }}
             />
 
             <label htmlFor="phone number">Sleeve length</label>
@@ -55,9 +102,9 @@ export const MyMeasurement = () => {
               placeholder="Sleeve length.."
               // value={((userData || {}).user || {}).phoneNumber}
               //    value={phoneNumber}
-              //    onChange={(e) => {
-              //      setPhoneNumber(e.target.value);
-              //    }}
+                 onChange={(e) => {
+                   setSleeveLength(e.target.value);
+                 }}
             />
 
             <label htmlFor="address">Waist Length</label>
@@ -67,9 +114,9 @@ export const MyMeasurement = () => {
               placeholder="Waist length.."
               //    value={address}
               // value={((userData || {}).user || {}).address}
-              //    onChange={(e) => {
-              //      setAddress(e.target.value);
-              //    }}
+                 onChange={(e) => {
+                   setWaistLength(e.target.value);
+                 }}
             />
 
             <label htmlFor="zip code">Neck Measurement</label>
@@ -78,9 +125,9 @@ export const MyMeasurement = () => {
               name="zip code"
               placeholder="Neck Measurement.."
               // value={((userData || {}).user || {}).zipCode}
-              //    onChange={(e) => {
-              //      setZipCode(e.target.value);
-              //    }}
+                 onChange={(e) => {
+                   setNect(e.target.value);
+                 }}
             />
 
             <label htmlFor="zip code">Comment/Design/Color</label>
@@ -89,11 +136,11 @@ export const MyMeasurement = () => {
               name="zip code"
               placeholder="Comment.."
               // value={((userData || {}).user || {}).zipCode}
-              //    onChange={(e) => {
-              //      setZipCode(e.target.value);
-              //    }}
+                 onChange={(e) => {
+                   setComment(e.target.value);
+                 }}
             />
-            {/* {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />} */}
+            {error && <ErrorNotice message={error} clearError={() => { setError(undefined) }} />}
 
             <input type="submit" value="Submit Measurement" />
           </form>
@@ -112,7 +159,7 @@ export const MyMeasurement = () => {
             </thead>
             <tbody>
               <tr>
-                <td data-label="Payment">Payment #1</td>
+                <td data-label="Payment">{}</td>
                 <td data-label="Issue Date">02/01/2015</td>
                 <td data-label="Amount">$2,311</td>
                 <td data-label="Period">01/01/2015 - 01/31/2015</td>

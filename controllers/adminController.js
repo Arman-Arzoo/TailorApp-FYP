@@ -1,4 +1,4 @@
-const Tailor = require("../models/adminModel");
+const Tailor = require("../models/adminModel/adminModel");
 const bcrypt = require("bcrypt");
 const validator = require("email-validator");
 const jwt = require("jsonwebtoken");

@@ -1,4 +1,4 @@
-const Tailor = require("../models/tailorModel");
+const Tailor = require("../models/tailorModel/tailorModel");
 const bcrypt = require("bcrypt");
 const validator = require("email-validator");
 const jwt = require("jsonwebtoken");

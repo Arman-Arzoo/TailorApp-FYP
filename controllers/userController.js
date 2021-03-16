@@ -1,10 +1,14 @@
-const User = require("../models/userModel");
+const User = require("../models/userModel/userModel");
+const Measurement = require("../models/userModel/measurement");
 const bcrypt = require("bcrypt");
 const validator = require("email-validator");
 const validatePhoneNumber = require("validate-phone-number-node-js");
 // isValidZipcode = require("is-valid-zipcode");
 const jwt = require("jsonwebtoken");
-const { findByIdAndDelete, findByIdAndUpdate } = require("../models/userModel");
+const {
+  findByIdAndDelete,
+  findByIdAndUpdate,
+} = require("../models/userModel/userModel");
 // const dotenv =require("dotenv");
 // const validator = require("validator");
 // const auth = require("../middleWare/auth");
@@ -87,8 +91,6 @@ exports.UserSingup = async (req, res) => {
 
     // validate phone Number
 
-    // zipCode = isValidZipcode("20000", "Pk");
-
     //store user
 
     const newUser = new User({
@@ -111,7 +113,7 @@ exports.UserSingup = async (req, res) => {
     //     api_key:"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"
     //   }
     // }))
-    
+
     const savedUser = await newUser.save();
     // .then(user=>{
     //   transporter.sendMail({
@@ -122,49 +124,63 @@ exports.UserSingup = async (req, res) => {
 
     //   })
     // });
+   
     res.json(savedUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-// @disc   Get all Users
+// @disc   Login form
 // @Route  Post /users/login
 // @acess  Public
 
 exports.UserLogin = async (req, res) => {
-  const { email, password } = req.body;
+     try {
+      const { email, password } = req.body;
 
-  if (!email || !password) {
-    res.status(400).json({ msg: "Please Fill All The Feild" });
-  }
+      if (!email || !password) {
+        res.status(400).json({ msg: "Please Fill All The Feild" });
+      }
+    
+      const user = await User.findOne({ email  });
+    
+      if (!user) {
+        res.status(400).json({ msg: "No Account With This Email" });
+      }
+    
+      const isMatch = await bcrypt.compare(password, user.password);
+    
+      if (isMatch) {
+        sessionUser = {userId:user._id,username:user.firstName}
+        req.session.user = sessionUser;
 
-  const user = await User.findOne({ email: email });
-
-  if (!user) {
-    res.status(400).json({ msg: "No Account With This Email" });
-  }
-
-  const isMatch = await bcrypt.compare(password, user.password);
-
-  if (!isMatch) {
-    res.status(400).json({ msg: "Invalid Crediential" });
-  }
-  // when user sign in we create a token for user
-  let JWT_SECRET = "youronwerisarman";
-
-  const token = jwt.sign({ id: user._id }, JWT_SECRET);
-
-  // response when successufly login
-  res.json({
-    token,
-    user,
-  });
+        let JWT_SECRET = "youronwerisarman";
+    
+        const token = jwt.sign({ id: user._id }, JWT_SECRET);
+        
+      
+        // response when successufly login
+        res.json({
+          token,
+          user,
+          sessionUser
+        });
+      }
+      else{
+        res.status(400).json({ msg: "Invalid Crediential" });
+      }
+      // when user sign in we create a token for user
+    
+       
+     } catch (error) {
+      res.status(500).json({ error: error.message });
+     }
 };
 
-// @disc   Get all Users
-// @Route  Post /users/delete-user
-// @acess  Public
+// @disc   delete request
+// @Route  delete/users/delete-user
+// @acess  users
 
 exports.deleteUser = async (req, res) => {
   try {
@@ -175,9 +191,9 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-// @disc   Get all Users
+// @disc   Get token valid
 // @Route  Post /users/token-valid
-// @acess  Public
+// @acess  users
 
 exports.tokenValid = async (req, res) => {
   try {
@@ -222,26 +238,19 @@ exports.GetAllUser = async (req, res) => {
       zipCode: user.zipCode,
       userImg: user.userImg,
       id: user._id,
-      
-      
-     
     });
   } catch (err) {
     res.status(400).send("can not get user");
   }
 };
 
-
-
 // update user profile
-
 // @disc   put all Users
 // @Route  put /users/:id
-// @acess  Public
+// @acess  users
 
 exports.updateUser = async (req, res) => {
-
-   User.findById(req.params.id, async function (err, user) {
+  User.findById(req.params.id, async function (err, user) {
     if (!user) {
       res.status(404).json({ msg: "No User" });
     } else {
@@ -256,63 +265,129 @@ exports.updateUser = async (req, res) => {
       user.city = req.body.city;
       user.zipCode = req.body.zipCode;
       user.userImg = req.body.userImg;
-      user.save().then((user) => {
-          res.status(200).json({ msg: "user updated!"});
-        
+      user
+        .save()
+        .then((user) => {
+          res.status(200).json({ msg: "user updated!" });
         })
         .catch((err) => {
-        
-          res.status(400).json({ msg: "Update Not possible"});
-        
+          res.status(400).json({ msg: "Update Not possible" });
         });
     }
- 
   });
+};
+
+// User submit measurement
+// @disc   post request
+// @Route  post /users/mymesurement
+// @acess  Users
+
+exports.userMeasurement = async (req, res) => {
+
+ try {
+
+  const user = await User.findById(req.user);
+  if(user){
+    let {
+      fullLength,
+      shoulder,
+      Chest,
+      SleeveLength,
+      WaistLength,
+      Neck,
+      Comment
+    } = req.body;
+  
+    if (
+      !fullLength ||
+      !shoulder ||
+      !Chest ||
+      !SleeveLength ||
+      !WaistLength||
+      !Neck ||
+      !Comment
+     
+    ) {
+      return res.status(400).json({ msg: "Please Fill Out All The Field" });
+    }
+  
+    const Measurements = new Measurement({
+      fullLength,
+      shoulder,
+      Chest,
+      SleeveLength,
+      WaistLength,
+      Neck,
+      Comment,
+      user:req.user
+  
+    });
+  
+    const saveMeasurement = await Measurements.save();
+    res.json(saveMeasurement);
+
+  }
+  else{
+     
+  return res.status(400).json({ msg:"Not verify" });
+
+  }
+
+ 
+
+   
+ } catch (err) {
+   
+  return res.status(400).json({ msg:err });
+ }
 
 
+
+
+  
+  // User.findById(req.params.id, async function (err, user) {
+  //   if (!user) {
+  //     res.status(404).json({ msg: "No User" });
+  //   } else {
+  //     user.userMeasurement.fullLength = req.body.fullLength;
+  //     user.userMeasurement.shoulder = req.body.shoulder;
+  //     user.userMeasurement.Chest = req.body.Chest;
+  //     user.userMeasurement.SleeveLength = req.body.SleeveLength;
+  //     user.userMeasurement.WaistLength = req.body.WaistLength;
+  //     user.userMeasurement.Neck = req.body.Neckh;
+  //     user.userMeasurement.Comment = req.body.Comment;
+
+  //     user
+  //       .save()
+  //       .then((user) => {
+  //         res.status(200).json({ msg: "Add Measurement Successfully" });
+  //       })
+  //       .catch((err) => {
+  //         res.status(400).json({ msg: "Update Not possible", err });
+  //       });
+  //   }
+  // });
 };
 
 
-// User submit measurement
+exports.getMeasurement = async(req,res)=>{
 
-// @disc   post all Users
-// @Route  post /users/mymesurement
-// @acess  Public
+  try {
+    const measurement = await Measurement.findById(req.Measurements);
 
-exports.userMeasurement = async (req , res)=>{
-
-
-
-
-
-
-
-
-
-  User.findById(req.params.id, async function (err, user) {
-    if (!user) {
-      res.status(404).json({ msg: "No User" });
-    } else {
-      user.userMeasurement.fullLength = req.body.fullLength;
-      user.userMeasurement.shoulder = req.body.shoulder;
-      user.userMeasurement.Chest = req.body.Chest;
-      user.userMeasurement.SleeveLength = req.body.SleeveLength;
-      user.userMeasurement.WaistLength = req.body.WaistLength;
-      user.userMeasurement.Neck = req.body.Neckh;
-      user.userMeasurement.Comment = req.body.Comment;
-     
-      user.save().then((user) => {
-          res.status(200).json({ msg: "Add Measurement Successfully"});
-        
-        })
-        .catch((err) => {
-        
-          res.status(400).json({ msg: "Update Not possible", err});
-        
-        });
-    }
- 
-  });
-
+    res.json({
+      fullLength:measurement.fullLength,
+      shoulder:measurement.shoulder,
+      Chest:measurement.Chest,
+      SleeveLength:measurement.SleeveLength,
+      WaistLength:measurement.WaistLength,
+      Neck:measurement.Neck,
+      Comment:measurement.Comment
+    })
+  
+    
+  } catch (err) {
+    res.status(400).send("No measurement Found");
+  }
 
 }

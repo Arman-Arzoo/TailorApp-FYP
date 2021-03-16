@@ -17,7 +17,9 @@ router.get('/',auth,userController.GetAllUser);
 router.put('/:id',userController.updateUser);
 
 // router for measurement Submission
-router.post('/udashboard/my-measurement',userController.userMeasurement)
+router.post('/udashboard/my-measurement/',userController.userMeasurement)
+// router for get measurement Submission
+router.get('/udashboard/my-measurement/', userController.getMeasurement)
 
 
 module.exports = router

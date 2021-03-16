@@ -15,18 +15,10 @@ const userSchema = new mongoose.Schema({
     city:{type:String,required:true},
     zipCode:{type:Number},
     userImg:{type:String},
-    role: {type:String,default:"user", required:true,enum:['user','tailor','admin'] }
-    // userMeasurement:[{
-    //     fullLength:{type:String},
-    //     shoulder:{type:String},
-    //     Chest:{type:String},
-    //     SleeveLength:{type:String},
-    //     WaistLength:{type:String},
-    //     Neck:{type:String},
-    //     Comment:{type:String}
-    // }]
+    role: {type:String,default:"user", required:true,enum:['user','tailor','admin'] },
+    Measurement:['Measurement']
 
 })
 
 
-module.exports = User = mongoose.model("user",userSchema);
+module.exports = User = mongoose.model("User",userSchema);
