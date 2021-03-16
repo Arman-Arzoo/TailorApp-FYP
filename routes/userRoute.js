@@ -8,7 +8,7 @@ router.post('/signup',userController.UserSingup);
 // router for sign in
 router.post('/signin',userController.UserLogin);
 // router for delete user
-router.delete('/delete-user',auth,userController.UserSingup);
+router.delete('/usersdelete-user',auth,userController.UserSingup);
 // router for check user token valid
 router.post('/token-valid',userController.tokenValid);
 // get all user form database

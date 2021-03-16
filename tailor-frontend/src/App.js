@@ -27,14 +27,14 @@ function App() {
         
           <main className="main">
             <Route path="/" exact component={HomeScreen}></Route>
-            <Route path="/signup" component={SignUp}></Route>
-            <Route path="/signin" component={SignIn}></Route>
+            <Route path="/users/signup" component={SignUp}></Route>
+            <Route path="/users/signin" component={SignIn}></Route>
             <Route path="/tailors/signin" component={TailorSignIn}></Route>
             <Route path="/admin/signup" component={AdminSignUp}></Route>
             <Route path="/admin/signin" component={AdminSignIn}></Route>
-            <Route path="/udashboard" component={UDashboard}></Route>
-            <Route path="/tdashboard" component={TDashboard}></Route>
-            <Route path="/adashboard" component={ADashboard}></Route>
+            <Route path="/users/udashboard" component={UDashboard}></Route>
+            <Route path="/tailors/tdashboard" component={TDashboard}></Route>
+            <Route path="/admin/adashboard" component={ADashboard}></Route>
           </main>
         
         <Footer name="Arman ALi" />

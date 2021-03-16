@@ -1,8 +1,9 @@
 const mongoose = require("mongoose")
+const user = require("./userModel")
 
 
 const measurement = new mongoose.Schema({
-    user:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
+    user:{type:mongoose.Schema.Types.ObjectId,ref:"user"},
     fullLength: {type:String,required:true},
     shoulder:{type:String,required:true},
     Chest:{type:String,required:true},

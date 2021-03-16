@@ -287,6 +287,8 @@ exports.userMeasurement = async (req, res) => {
  try {
 
   const user = await User.findById(req.user);
+  console.log(user)
+  // const user = await User.findOne({ email  });
   if(user){
     let {
       fullLength,
@@ -332,11 +334,8 @@ exports.userMeasurement = async (req, res) => {
   return res.status(400).json({ msg:"Not verify" });
 
   }
-
- 
-
-   
- } catch (err) {
+ } 
+ catch (err) {
    
   return res.status(400).json({ msg:err });
  }

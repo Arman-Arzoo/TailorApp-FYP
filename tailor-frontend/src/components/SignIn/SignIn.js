@@ -26,7 +26,7 @@ export const SignIn = () => {
       });
 
       localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/udashboard");
+      history.push("/users/udashboard");
 
     }
     catch (err) {

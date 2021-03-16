@@ -38,20 +38,20 @@ export const UDashboard = () => {
         </div>
         <hr/>
        
-        <Link to="/udashboard">
+        <Link to="/users/udashboard">
          
           <span>
             <MdDashboard/>
           </span>
           Dashboard
         </Link>
-        <Link className="active" to="/udashboard/myorder">
+        <Link className="active" to="/users/udashboard/myorder">
           MyOrder
         </Link>
-        <Link to="/udashboard/my-measurement">My meansurement</Link>
-        <Link to="/udashboard/update-profile">Update Profile</Link>
-        <Link to="/udashboard/hire-tailor">Hire Tailor</Link>
-        <Link to="/udashboard/pick-up-service">Pick up Services</Link>
+        <Link to="/users/udashboard/my-measurement">My meansurement</Link>
+        <Link to="/users/udashboard/update-profile">Update Profile</Link>
+        <Link to="/users/udashboard/hire-tailor">Hire Tailor</Link>
+        <Link to="/users/udashboard/pick-up-service">Pick up Services</Link>
       
 
         {userData.user ? (
@@ -69,15 +69,15 @@ export const UDashboard = () => {
       </div>
       
       <div className="content">
-        <Route exact path="/udashboard/myorder" component={MyOrder}></Route>
-        <Route path="/udashboard/my-measurement" component={MyMeasurement}></Route>
+        <Route exact path="/users/udashboard/myorder" component={MyOrder}></Route>
+        <Route path="/users/udashboard/my-measurement" component={MyMeasurement}></Route>
         <Route
-          path="/udashboard/update-profile"
+          path="/users/udashboard/update-profile"
           component={UpdateProfile}
         ></Route>
-        <Route path="/udashboard/hire-tailor" component={HireTailor}></Route>
-        <Route path="/udashboard/pick-up-service" component={MyOrder}></Route>
-        <Route exact path="/udashboard" component={UserDashboard}></Route>
+        <Route path="/users/udashboard/hire-tailor" component={HireTailor}></Route>
+        <Route path="/users/udashboard/pick-up-service" component={MyOrder}></Route>
+        <Route exact path="/users/udashboard" component={UserDashboard}></Route>
       </div>
     </div>
   );

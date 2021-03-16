@@ -65,8 +65,8 @@ export const Header = () => {
             } else {
               return (
                 <>
-                  <Link to="/signup">Sign Up</Link>
-                  <Link to="/signin">Sign In</Link>
+                  <Link to="/users/signup">Sign Up</Link>
+                  <Link to="/users/signin">Sign In</Link>
                 </>
               );
             }
