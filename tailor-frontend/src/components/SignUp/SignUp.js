@@ -47,7 +47,7 @@ export const SignUp = () => {
       const a = await axios.post("/users/signup", newUser);
       console.log(a);
   
-      history.push("/signin")
+      history.push("/users/signin")
    
      
     } catch (err) {

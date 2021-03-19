@@ -40,7 +40,7 @@ export const MyMeasurement = () => {
       // });
 
     
-      history.push("/udashboard");
+      // history.push("/users/udashboard");
 
     }
     catch (err) {

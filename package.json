@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "We are 3 in team to develop this project. project include measurement submission ,hire expert for measurement , hire tailor , gave feed back and use pick up services. We use MERN stack techologies for building this project",
   "main": "server.js",
+ 
   "scripts": {
     "start": "node server.js",
     "server": " nodemon server.js",
@@ -33,6 +34,7 @@
     "express-session": "^1.17.1",
     "is-valid-zipcode": "^1.0.3",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.4",
     "mongoose": "^5.10.15",
     "nodemailer": "^6.4.16",
     "nodemailer-sendgrid-transport": "^0.2.0",

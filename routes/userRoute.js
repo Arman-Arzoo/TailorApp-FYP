@@ -15,11 +15,20 @@ router.post('/token-valid',userController.tokenValid);
 router.get('/',auth,userController.GetAllUser);
 // router for update user
 router.put('/:id',userController.updateUser);
+// session user verify
+router.get('/session',auth,userController.SessionUsers);
 
 // router for measurement Submission
 router.post('/udashboard/my-measurement/',userController.userMeasurement)
 // router for get measurement Submission
-router.get('/udashboard/my-measurement/', userController.getMeasurement)
+router.get('/udashboard/my-measurement/:id', userController.getMeasurement)
+
+
+// router get request security 
+
+
+
+
 
 
 module.exports = router

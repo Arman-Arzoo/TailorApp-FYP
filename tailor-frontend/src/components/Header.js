@@ -11,6 +11,8 @@ export const Header = () => {
   const lastname = ((userData || {}).user || {}).lastName;
   const userName = firstname + " " + lastname;
 
+  console.log("verify user is ", userData)
+  console.log("user is  ", userData.user)
   return (
     <div>
       <div className="header">
@@ -21,14 +23,14 @@ export const Header = () => {
 
         <div className="header-menu">
           {(() => {
-            if (userData.user && userData.user.role === "user") {
+            if (userData.sessionUser && userData.user.role === "user") {
               return (
                 <>
                   <dev className="users-notification">
                     <AiFillBell />
                   </dev>
 
-                  <Link to="/udashboard">
+                  <Link to="/users/udashboard">
                     <div className="header-profile">
                       <img src="/images/OurTeam/arman.PNG" alt="arman"></img>
                       <span className="header-name">{userName} </span>

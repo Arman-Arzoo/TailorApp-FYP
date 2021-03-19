@@ -19,10 +19,10 @@ export const SignIn = () => {
     try {
       const logInUser = { email, password };
       const loginRes = await axios.post("/users/signin", logInUser);
-
       setUserData({
         token: loginRes.data.token,
-        user: loginRes.data.user
+        user: loginRes.data.user,
+        sessionUser: loginRes.data.sessionUser
       });
 
       localStorage.setItem("auth-token", loginRes.data.token);

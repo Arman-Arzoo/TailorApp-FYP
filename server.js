@@ -2,7 +2,7 @@
 const express = require ("express");
 const mongoose = require ("mongoose");
 const session = require('express-session')
-// const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')
 const cors = require("cors");
 const dotenv = require("dotenv");
 const userRoute = require('./routes/userRoute')
@@ -18,24 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-let sessionOptions = session({
-    secret:"hi i am a developer",
-    // store:new MongoStore({
-    //     client:db
-    // }),
-    resave:false,
-    saveUninitialized:false,
-    cookie:{
-        maxAge:1000*60*60 *24, 
-        httpOnly:true,
-    }
-})
-
-app.use(sessionOptions)
-
 const { DB, PORT } = require("./config/index");
-
-
 
 app.listen(PORT,()=>{console.log("Server Started at http://localhost:4000")});
 
@@ -52,6 +35,27 @@ const db = mongoose.connect(DB,{
   );
 
 //session for user
+// let sessionOptions = express.session({
+//     secret:"hi i am a developer",
+//     store:new MongoStore({ }),
+//     resave:false,
+//     saveUninitialized:false,
+//     cookie:{
+//         maxAge:1000*60*60 *24, 
+//         httpOnly:true,
+//     }
+// })
+
+app.use(session({
+    secret: 'arman a program developer',
+    saveUninitialized: true, // don't create session until something stored
+    resave: false, //don't save session if unmodified
+    store: MongoStore.create({
+      mongoUrl: 'mongodb://localhost:27017/tailorFyp',
+      touchAfter: 24 * 3600 // time period in seconds
+    }),
+    cookie:{maxAge:180*60*1000}
+  }));
 
  // set up routes
 

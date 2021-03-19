@@ -5,7 +5,7 @@ import axios from "axios";
 // All data
 const globalData = {
   // Data: [],
-  userMeasurement:{}
+  // userMeasurement:{}
 };
 
 // create context
@@ -39,12 +39,14 @@ export const GlobalProvider = ({ children }) => {
 
   const [isSidebar, setSidebar] = useState(true);
 
+  // for user login data
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined,
   });
 
   useEffect(() => {
+  
     const checkLoggedIn = async () => {
       let token = localStorage.getItem("auth-token");
       if (token === null) {
@@ -60,19 +62,30 @@ export const GlobalProvider = ({ children }) => {
         const userRes = axios.get("/users/", {
           headers: { "x-auth-token": token },
         });
-
+       
+        // const verifySession = axios.get("/users/session",{
+        //   headers:{"x-auth-token":token}
+        // })
+        // console.log("Hello form session",(await verifySession).data)
         setUserData({
           token,
           user: (await userRes).data,
         });
       }
     };
+
     checkLoggedIn();
+
+    
   }, []);
 
+  const [getMeasurement, setMeasurement] = useState({
+
+     
+  })
   // get measurment
   useEffect(()=>{
-
+   
 
   },[])
 

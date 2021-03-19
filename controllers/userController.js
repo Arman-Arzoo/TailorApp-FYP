@@ -9,6 +9,7 @@ const {
   findByIdAndDelete,
   findByIdAndUpdate,
 } = require("../models/userModel/userModel");
+const measurement = require("../models/userModel/measurement");
 // const dotenv =require("dotenv");
 // const validator = require("validator");
 // const auth = require("../middleWare/auth");
@@ -139,11 +140,13 @@ exports.UserLogin = async (req, res) => {
      try {
       const { email, password } = req.body;
 
+
       if (!email || !password) {
         res.status(400).json({ msg: "Please Fill All The Feild" });
       }
     
       const user = await User.findOne({ email  });
+     
     
       if (!user) {
         res.status(400).json({ msg: "No Account With This Email" });
@@ -152,11 +155,11 @@ exports.UserLogin = async (req, res) => {
       const isMatch = await bcrypt.compare(password, user.password);
     
       if (isMatch) {
-        sessionUser = {userId:user._id,username:user.firstName}
-        req.session.user = sessionUser;
-
-        let JWT_SECRET = "youronwerisarman";
     
+        sessionUser = user._id;
+        req.session.user = sessionUser;
+           
+        let JWT_SECRET = "youronwerisarman";
         const token = jwt.sign({ id: user._id }, JWT_SECRET);
         
       
@@ -229,52 +232,76 @@ exports.GetAllUser = async (req, res) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      phoneNumber: user.phoneNumber,
-      gender: user.gender,
-      address: user.address,
-      country: user.country,
-      state: user.status,
-      city: user.city,
-      zipCode: user.zipCode,
-      userImg: user.userImg,
-      id: user._id,
+      // phoneNumber: user.phoneNumber,
+      // gender: user.gender,
+      // address: user.address,
+      // country: user.country,
+      // state: user.status,
+      // city: user.city,
+      // zipCode: user.zipCode,
+      // userImg: user.userImg,
+      // id: user._id,
+      sessionUser
     });
   } catch (err) {
     res.status(400).send("can not get user");
   }
 };
 
+// Session for user
+// @disc   get session  Users
+// @Route  get /users/session
+// @acess  users
+
+
+exports.SessionUsers = async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    const sessionUser = req.session.user
+    res.json({
+      sessionUser
+    })
+  } catch (error) {
+    res.status(400).send("no session user");
+  }
+
+}
 // update user profile
 // @disc   put all Users
 // @Route  put /users/:id
 // @acess  users
 
 exports.updateUser = async (req, res) => {
-  User.findById(req.params.id, async function (err, user) {
-    if (!user) {
-      res.status(404).json({ msg: "No User" });
-    } else {
-      user.firstName = req.body.firstName;
-      user.lastName = req.body.lastName;
-      user.email = req.body.email;
-      user.phoneNumber = req.body.phoneNumber;
-      user.gender = req.body.gender;
-      user.address = req.body.address;
-      user.country = req.body.country;
-      user.state = req.body.state;
-      user.city = req.body.city;
-      user.zipCode = req.body.zipCode;
-      user.userImg = req.body.userImg;
-      user
-        .save()
-        .then((user) => {
-          res.status(200).json({ msg: "user updated!" });
-        })
-        .catch((err) => {
-          res.status(400).json({ msg: "Update Not possible" });
-        });
-    }
-  });
+  try {
+    User.findById(req.params.id, async function (err, user) {
+      if (!req.session.user) {
+        res.status(404).json({ msg: "No User" });
+      } else {
+        user.firstName = req.body.firstName;
+        user.lastName = req.body.lastName;
+        user.email = req.body.email;
+        user.phoneNumber = req.body.phoneNumber;
+        user.gender = req.body.gender;
+        user.address = req.body.address;
+        user.country = req.body.country;
+        user.state = req.body.state;
+        user.city = req.body.city;
+        user.zipCode = req.body.zipCode;
+        user.userImg = req.body.userImg;
+        user
+          .save()
+          .then((user) => {
+            res.status(200).json({ msg: "user updated!" });
+          })
+          .catch((err) => {
+            res.status(400).json({ msg: "Update Not possible" });
+          });
+      }
+    });
+    
+  } catch (error) {
+    res.status(400).json({msg:"update failed try agin"})
+  }
 };
 
 // User submit measurement
@@ -286,10 +313,8 @@ exports.userMeasurement = async (req, res) => {
 
  try {
 
-  const user = await User.findById(req.user);
-  console.log(user)
-  // const user = await User.findOne({ email  });
-  if(user){
+  if(sessionUser){
+    
     let {
       fullLength,
       shoulder,
@@ -321,7 +346,7 @@ exports.userMeasurement = async (req, res) => {
       WaistLength,
       Neck,
       Comment,
-      user:req.user
+      user:sessionUser
   
     });
   
@@ -330,11 +355,11 @@ exports.userMeasurement = async (req, res) => {
 
   }
   else{
-     
-  return res.status(400).json({ msg:"Not verify" });
+     return res.status(400).json({msg:"no session user"})
+  }
 
   }
- } 
+
  catch (err) {
    
   return res.status(400).json({ msg:err });
@@ -372,7 +397,9 @@ exports.userMeasurement = async (req, res) => {
 exports.getMeasurement = async(req,res)=>{
 
   try {
-    const measurement = await Measurement.findById(req.Measurements);
+    id= req.params.id
+    const measurement = await Measurement.findOne({id:measurement.user});
+    console.log('hello good morning',measurement)
 
     res.json({
       fullLength:measurement.fullLength,
@@ -390,3 +417,17 @@ exports.getMeasurement = async(req,res)=>{
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
