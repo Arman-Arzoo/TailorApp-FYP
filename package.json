@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "We are 3 in team to develop this project. project include measurement submission ,hire expert for measurement , hire tailor , gave feed back and use pick up services. We use MERN stack techologies for building this project",
   "main": "server.js",
- 
   "scripts": {
     "start": "node server.js",
     "server": " nodemon server.js",

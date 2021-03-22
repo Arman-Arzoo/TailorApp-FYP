@@ -2,7 +2,12 @@ const Tailor = require("../models/tailorModel/tailorModel");
 const bcrypt = require("bcrypt");
 const validator = require("email-validator");
 const jwt = require("jsonwebtoken");
-
+const { post } = require("../routes/tailorRoutes");
+const measurement = require("../models/userModel/measurement");
+const userModel = require("../models/userModel/userModel");
+const TMeasurement=require("../models/tailorModel/ViewMeasurement")
+// const mongoose=require("mongoose")
+// const ViewMeasurement=mongoose.model("TMeasurement")
 
 
 exports.TailorSingup = async (req, res) => {
@@ -165,3 +170,15 @@ exports.TailorLogin = async (req, res) => {
       res.status(400).send("No token");
     }
   };
+
+exports.ViewMeasurement=(req,res)=>{
+  TMeasurement.find()
+  .populate("customerName")
+  // .populate("usermeasurment")
+  .then(mesure=>{
+    res.json({mesure})
+    console.log(mesure)
+  })
+
+}
+    
